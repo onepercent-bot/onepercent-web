@@ -1057,7 +1057,7 @@ button:active:not(:disabled){transform:scale(.95)}
 </nav>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 29;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 30;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1297,7 +1297,7 @@ const EX = [
   // ВРЕМЕННО: тест поставщика RepDB (зона test — в тренировки не попадает)
   ['rdtest2','Присед RepDB · mp4 на нашем фоне','test',[]],
   ['rdcurl','Сгибания рук с гантелями','test',[]],['rdpec','Бабочка в тренажёре','test',[]],['rdsq','Присед со штангой на груди','test',[]],['rdrow','Тяга гантели в наклоне','test',[]],['rdpull','Подтягивания','test',[]],['rdinc','Сгибания на наклонной скамье','test',[]],
-  ['vtpec','Бабочка в тренажёре','test',[]],['vtsq','Присед со штангой на груди','test',[]],['vtohp','Жим гантелей сидя','test',[]],['vtpd','Разгибания на блоке','test',[]],['vtlat','Махи гантелями в стороны','test',[]],['vtarn','Жим Арнольда','test',[]],
+  ['vtpec','Бабочка в тренажёре','test',[]],['vtsq','Присед со штангой на груди','test',[]],['vtohp','Жим гантелей сидя','test',[]],['vtpd','Разгибания на блоке','test',[]],['vtlat','Махи гантелями в стороны','test',[]],['vtarn','Жим Арнольда','test',[]],['vtfpike','Отжимания «пайк»','test',[]],['vtfcr','Скручивания лёжа','test',[]],['vtfrc','Обратные скручивания','test',[]],['vtfkick','Отведение ноги у стены','test',[]],['vtfsm','Тяга в наклоне в Смите','test',[]],['vtfhack','Гакк-присед','test',[]],
   ['bench','Жим штанги лёжа','chest',['shoulders']],['incdb','Жим гантелей на наклонной','chest',[]],['pecdeck','Бабочка (тренажёр)','chest',[]],['fly','Разводка гантелей','chest',[]],['pushup','Отжимания','chest',[]],
   ['latpull','Тяга верхнего блока','back',[]],['dbrow','Тяга гантели одной рукой','back',[]],['bbrow','Тяга штанги в наклоне','back',['back']],['seatrow','Тяга нижнего блока сидя','back',[]],
   ['shrug','Шраги с гантелями','traps',['neck']],['facepull','Тяга к лицу на блоке','traps',[]],
@@ -1324,6 +1324,12 @@ const EXCARD = {
   vtohp:{ vid: 'img/vt_ohp', mus: ['Плечи'], eq: 'db', test: 1, tip: 'Vital: белый фон, мужчина в футболке, мышца не подсвечена' },
   vtpd:{ vid: 'img/vt_pushdown', mus: ['Трицепс'], eq: 'mach', test: 1, tip: 'Vital: белый фон, мужчина в футболке, мышца не подсвечена' },
   vtlat:{ vid: 'img/vt_lateral', mus: ['Плечи'], eq: 'db', test: 1, tip: 'Vital: белый фон, мужчина в футболке, мышца не подсвечена' },
+  vtfpike:{ vid: 'img/vtf_pike', mus: ['Плечи','Трицепс'], eq: 'home', test: 1, tip: 'Vital (женщина): белый фон, подсвечены плечи и руки' },
+  vtfcr:{ vid: 'img/vtf_crunch', mus: ['Пресс'], eq: 'home', test: 1, tip: 'Vital (женщина): белый фон, подсвечен пресс' },
+  vtfrc:{ vid: 'img/vtf_revcr', mus: ['Пресс','Ягодицы'], eq: 'home', test: 1, tip: 'Vital (женщина): мышцы показаны в анатомическом виде, свечение' },
+  vtfkick:{ vid: 'img/vtf_kick', mus: ['Ягодицы','Задняя поверхность бедра'], eq: 'home', test: 1, tip: 'Vital (женщина): студия, подсвечены ягодицы и бедро' },
+  vtfsm:{ vid: 'img/vtf_smith', mus: ['Ягодицы','Задняя поверхность бедра','Поясница'], eq: 'bar', test: 1, tip: 'Vital (женщина): в зале, без подсветки мышц' },
+  vtfhack:{ vid: 'img/vtf_hack', mus: ['Квадрицепсы','Ягодицы'], eq: 'mach', test: 1, tip: 'Vital (женщина): в зале, без подсветки мышц' },
   vtarn:{ vid: 'img/vt_arnold', mus: ['Плечи'], eq: 'db', test: 1, tip: 'Vital: белый фон, мужчина в футболке, мышца не подсвечена' },
   rdtest2:{ img: 'img/ex_squat_rd_th.png', vid: 'img/ex_squat_rdv', vbg: 1, mus: ['Квадрицепсы','Передние дельты'], eq: 'bar', test: 1, tip: 'Тест RepDB: тот же клип на нашем фоне, mp4 276 КБ' },
   fly:    { mus: ['Грудь','Передние дельты'], eq: 'db', tip: 'Локти чуть согнуты, гантели опускай плавно' },
@@ -1800,7 +1806,7 @@ function renderLib(){ const ids = EX.filter(e => e[2] === libZ).map(e => e[0]), 
   $('libH').textContent = zn;
   const n = ids.filter(id => !card(id).test).length, nb = ids.filter(id => card(id).base).length;
   $('libN').textContent = `${n} ${plural(n, 'упражнение', 'упражнения', 'упражнений')}`;
-  if (libZ === 'test') $('libN').textContent = 'RepDB и Vital · по 6 упражнений';
+  if (libZ === 'test') $('libN').textContent = 'RepDB 6 · Vital мужские 6 · Vital женские 6';
   $('libH').style.fontSize = zn.length > 6 ? '24px' : '';
   miniFig($('libFig'), v, new Set([libZ])); figCrop($('libFig'), v, libZ, Math.round(Math.min(innerWidth, 480) * .6), 236, 440, .5, .44);
   // фильтр инвентаря: повторное нажатие снимает выбор — снова видно всё
@@ -1816,7 +1822,7 @@ function renderLib(){ const ids = EX.filter(e => e[2] === libZ).map(e => e[0]), 
   const sec = (h, sub, list) => list.length ? `<div class="lx-sec"><h2>${h}</h2><p>${sub}</p><div class="lx-grid">${list.map(row).join('')}</div></div>` : '';
   // просто все упражнения группы: сначала базовые
   const ord = [...shown.filter(id => card(id).base), ...shown.filter(id => !card(id).base)].sort((a, b) => (FAV.includes(b) ? 1 : 0) - (FAV.includes(a) ? 1 : 0));
-  $('libG').innerHTML = libZ === 'test' ? sec('RepDB · $499', 'Прозрачный фон, мышца подсвечена в самой анимации', ord.filter(id => id.startsWith('rd') && id !== 'rdtest2')) + sec('Vital · от $49', 'Белый фон, в зале мужчина в футболке без подсветки (в женских и домашних подсветка есть)', ord.filter(id => id.startsWith('vt')))
+  $('libG').innerHTML = libZ === 'test' ? sec('RepDB · $499', 'Прозрачный фон, мышца подсвечена в самой анимации', ord.filter(id => id.startsWith('rd') && id !== 'rdtest2')) + sec('Vital · от $49', 'Белый фон, в зале мужчина в футболке без подсветки (в женских и домашних подсветка есть)', ord.filter(id => id.startsWith('vt') && !id.startsWith('vtf'))) + sec('Vital · женские примеры', 'Дома и в зале: в части роликов мышцы подсвечены, в зальных нет', ord.filter(id => id.startsWith('vtf')))
     : `<div class="lx-grid">${ord.map(row).join('')}</div>`;
   $('libG').querySelectorAll('.lf').forEach(f => { miniFig(f, v, new Set([libZ])); const w = Math.round((Math.min(innerWidth, 480) - 64) / 3); figCrop(f, v, libZ, w, w, 380, .5, .5); });
   $('libG').querySelectorAll('.lx-row').forEach((r, i) => r.style.animationDelay = i * .04 + 's'); }
