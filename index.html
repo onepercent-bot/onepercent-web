@@ -694,6 +694,10 @@ button:active:not(:disabled){transform:scale(.95)}
 .lx-sec h2{font-size:18px}
 html.one-view #hmB,html.one-view #prB,html.one-view #dFigB,html.one-view #viewSeg{display:none!important}
 html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
+#s-home .hm-top2{align-items:center;text-align:center;padding-top:8px}
+#s-home .hm-top2 b{font-size:28px;line-height:32px;letter-spacing:-.8px}
+#s-home .hm-top2 .ap-date{display:none}
+#s-home .hm-top2{align-items:center;text-align:center;padding-top:4px}#s-home .hm-top2 b{font-family:Unbounded,system-ui,sans-serif;font-size:30px;line-height:36px;font-weight:800;letter-spacing:-1.2px;color:#F0E4CE}#s-home .hm-top2 .ap-date{display:none}
 </style>
 </head>
 <body>
@@ -1059,7 +1063,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 </nav>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 38;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 39;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
