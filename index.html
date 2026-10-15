@@ -1063,7 +1063,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 </nav>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 39;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 40;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1559,8 +1559,8 @@ function program(){ const n = Math.min(5, Math.max(1, +data.days || 3)), mine = 
   while (d.length < n && d.length < mine.length) { const big = d.reduce((a, x, i) => x.length > d[a].length ? i : a, 0); if (d[big].length < 2) break; d.splice(big + 1, 0, d[big].splice(Math.ceil(d[big].length / 2))); }
   return d; }
 // какой день программы следующий: после последней тренировки по программе
-function progDay(){ const d = program(), h = [...HIST].reverse().find(x => x.pd != null); return h ? (h.pd + 1) % d.length : 0; }
-const weekCount = () => { const m = monday(new Date()).getTime(); return HIST.filter(h => h.t >= m).length; };
+function progDay(){ const d = program(), h = [...HIST].reverse().find(x => x.pd != null && x.t > (+data.pt || 0));   /* после новой анкеты программа идёт с первого дня */ return h ? (h.pd + 1) % d.length : 0; }
+const weekCount = () => { const m = monday(new Date()).getTime(); return new Set(HIST.filter(h => h.t >= m).map(h => dayKey(new Date(h.t)))).size; };   // тренировочные дни, а не каждая запись
 
 // программа на сегодня: из зон и цели анкеты, с учётом ограничений; меняется от тренировки к тренировке
 function todayPlan(){
@@ -2090,7 +2090,7 @@ $('btnStreakOk').onclick = () => { renderHome(); go('s-home'); };
 
 // ---- что уходит боту в чат ----
 function profile(){ return { sex: data.sex, age: data.age, height: data.height, weight: data.weight, level: data.level, activity: data.activity,
-  health: data.health, healthDetails: (data.healthDetails || '').slice(0, 300), goals: data.goals, zones: data.zones, days: data.days, wd: data.wd, name: userName() || undefined }; }
+  health: data.health, healthDetails: (data.healthDetails || '').slice(0, 300), goals: data.goals, zones: data.zones, days: data.days, wd: data.wd, pt: data.pt, name: userName() || undefined }; }
 function send(obj){
   let s = JSON.stringify(obj);
   if (new Blob([s]).size > 3900 && obj.w) { obj.w.ex.forEach(e => delete e.p); s = JSON.stringify(obj); }   // лимит Telegram 4096 байт
@@ -2212,7 +2212,7 @@ $('btnAiPlan').onclick = () => { haptic(); send({ ...profile(), hasPhoto: !!data
 $('btnRedo').onclick = () => { haptic(); show(1); };
 
 // анкета пройдена: запоминаем и открываем главную (раньше окно закрывалось сразу)
-btnFinish.onclick = () => { store.set('profile', profile()); renderHome(); go('s-home'); };
+btnFinish.onclick = () => { data.pt = Date.now(); store.set('profile', profile()); renderHome(); go('s-home'); };
 
 // при открытии: если анкета уже пройдена — сразу на главную
 (async () => {
