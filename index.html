@@ -58,6 +58,7 @@ h1{margin:16px 0 0;font-size:34px;line-height:38px;font-weight:800;letter-spacin
 .fig img.full{inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .fig .pane{position:absolute;inset:0;transition:opacity .35s ease}
 .fig .pane.hidden{opacity:0}
+#fig.pk{aspect-ratio:46/100}
 .focus-chips{flex:1;display:flex;flex-direction:column;gap:8px}
 .focus-chips .chip{width:100%;height:44px;padding:0 10px}
 html.boot #s-welcome .welcome-body{visibility:hidden;opacity:0}
@@ -1378,7 +1379,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 86;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 87;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1539,8 +1540,17 @@ let sel = new Set(), view = 'front';
 
 // собрать фигуру: два слоя (спереди/сзади), в каждом база + зоны. Пересобирается при смене пола.
 const layers = {}; const fulls = [];
+const FIGPK = { base: 'img/pk_base.webp', z: { chest: 'img/pk_chest.webp', shoulders: 'img/pk_shoulders.webp', abs: 'img/pk_abs.webp', traps: 'img/pk_traps.webp' } };   // мужская фигура в анкете: основа + готовая картинка зоны
+let pkLast = null;
 function buildFig(){
   fig.innerHTML = ''; Object.keys(layers).forEach(k => delete layers[k]); fulls.length = 0;
+  fig.classList.toggle('pk', FIG === FIGS.male);
+  if (FIG === FIGS.male) {
+    const pane = document.createElement('div'); pane.className = 'pane'; pane.dataset.view = 'front';
+    const base = document.createElement('img'); base.className = 'base'; base.alt = 'Фигура'; base.src = FIGPK.base; pane.appendChild(base);
+    Object.entries(FIGPK.z).forEach(([k, src]) => { const f = document.createElement('img'); f.className = 'zone full'; f.alt = ''; f.src = src; f.dataset.view = 'front'; f.dataset.k = k; pane.appendChild(f); fulls.push(f); });
+    fig.appendChild(pane); return;
+  }
   ['front','back'].forEach(v => {
     const pane = document.createElement('div'); pane.className = 'pane' + (v === view ? '' : ' hidden'); pane.dataset.view = v;
     const base = document.createElement('img'); base.className = 'base'; base.alt = v === 'front' ? 'Фигура спереди' : 'Фигура сзади'; base.src = FIG[v].base;
@@ -1572,9 +1582,13 @@ function renderZones(picked){
   });
   // слои мышц лежат на одной и той же фигуре — показываем все выбранные сразу
   const on = new Set(all ? KEYS : [...sel]);
-  fulls.forEach(f => f.classList.toggle('on', on.has(f.dataset.k)));
+  if (fig.classList.contains('pk')) {   // показываем картинку последней выбранной зоны, у которой она есть
+    if (picked && picked !== 'all' && on.has(picked) && FIGPK.z[picked]) pkLast = picked;
+    if (all || !on.has(pkLast)) pkLast = all ? null : [...on].find(k => FIGPK.z[k]) || null;
+    fulls.forEach(f => f.classList.toggle('on', f.dataset.k === pkLast));
+  } else fulls.forEach(f => f.classList.toggle('on', on.has(f.dataset.k)));
   // если выбранная зона видна только с другой стороны — повернуть фигуру
-  if (picked && picked !== 'all' && (all || sel.has(picked))) {
+  if (!fig.classList.contains('pk') && picked && picked !== 'all' && (all || sel.has(picked))) {
     const onFront = !!FIG.front.zones[picked], onBack = !!FIG.back.zones[picked];
     if (view === 'front' && !onFront && onBack) setView('back');
     if (view === 'back' && !onBack && onFront) setView('front');
@@ -1893,8 +1907,8 @@ function homeV57(p){
 const HERO_IMG = { chest: 'img/hero_chest.webp', shoulders: 'img/hero_shoulders.webp', abs: 'img/hero_abs.webp', traps: 'img/hero_traps.webp' };   // ключ — зона дня
 function heroSwap(zs){
   const cine = document.querySelector('#apToday .hm-cine'), im = cine && cine.querySelector('img.ch'); if (!im) return;
-  const zk = (zs || []).find(k => HERO_IMG[k]), src = zk ? HERO_IMG[zk] : 'img/hero_char.webp';   // день из нескольких зон — картинка первой зоны, у которой она есть
-  cine.classList.toggle('baked', src !== 'img/hero_char.webp');
+  const zk = (zs || []).find(k => HERO_IMG[k]), src = zk ? HERO_IMG[zk] : 'img/hero_base.webp';   // день из нескольких зон — картинка первой зоны, у которой она есть
+  cine.classList.add('baked');
   if (!im.getAttribute('src').endsWith(src)) im.setAttribute('src', src);
 }
 // «План на неделю»: дни из анкеты (data.wd) обведены, сделанные — кремовые с галочкой.
