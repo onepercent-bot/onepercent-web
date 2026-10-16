@@ -710,6 +710,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 76%,rgba(0,0,0,.6) 88%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 76%,rgba(0,0,0,.6) 88%,transparent 100%)}
 .hm-cine img{position:absolute;left:50%;top:6px;height:var(--ch);width:auto;max-width:none;transform:translateX(-50%);user-select:none;
  -webkit-mask-image:linear-gradient(to bottom,#000 70%,rgba(0,0,0,.6) 84%,transparent 97%);mask-image:linear-gradient(to bottom,#000 70%,rgba(0,0,0,.6) 84%,transparent 97%)}
+#s-home #apToday .hm-cine.baked img.ch{top:calc(var(--ct) - var(--ch) * .098);height:calc(var(--ch) * 1.098);-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 72.7%,rgba(0,0,0,.6) 85.4%,transparent 97.3%),linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,#000 0,#000 72.7%,rgba(0,0,0,.6) 85.4%,transparent 97.3%),linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
 .hm-cine .gl{display:none}
 .hm-cine .fog{display:none}
 #s-home .hm-pill{position:relative;z-index:2;margin-top:-30px;background:rgba(11,16,24,.82);box-shadow:inset 0 0 0 1px rgba(255,230,184,.2);color:#F1EBDD;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -955,6 +956,44 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 /* v71: без дублей — на главной нет «Рекомендуемой тренировки» (её смысл в кнопке и плане), служебная версия в профиле мельче */
 #s-home .hm-reco{display:none}
 #verTap{font-size:11.5px!important;opacity:.6}
+
+/* v74: «Упражнения» — плитки-фото по образцу: 3 в ряд, последние две широкие; меньше по высоте; подсвеченная мышца нашего персонажа */
+#s-grp .gp-h{display:none}
+#s-grp .gp-sub[hidden]{display:none}
+#s-grp .srch{margin-top:14px}
+#s-grp .gp{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+#s-grp .gp-t{grid-column:span 2;position:relative;display:block;height:auto;aspect-ratio:.82;padding:0;border-radius:16px;overflow:hidden;background:#151C28;box-shadow:inset 0 0 0 1px rgba(242,229,205,.08)}
+#s-grp .gp-t:nth-child(n+7){grid-column:span 3;aspect-ratio:1.75}
+#s-grp .gp-t .ph{position:absolute;inset:0;width:auto;height:auto;border-radius:0;background:#202938}
+#s-grp .gp-t .ph canvas{display:block;width:100%;height:100%;object-fit:cover}
+#s-grp .gp-t .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 8px 8px 9px;background:linear-gradient(180deg,rgba(11,16,24,0),rgba(11,16,24,.88) 60%)}
+#s-grp .gp-t b{font-size:14px;line-height:17px;font-weight:600;color:#F1EBDD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:26px}
+#s-grp .gp-t span{margin-top:1px;font-size:11px;line-height:14px;color:#98A1B2;white-space:nowrap}
+#s-grp .gp-t .cnt{position:absolute;top:6px;right:6px}
+#s-grp .gp-ch{position:absolute;right:7px;bottom:25px;padding:3px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(152,161,178,.45);flex:none;width:20px;height:20px;fill:none;stroke:#98A1B2;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;order:4}
+
+/* v75: «Упражнения» — чипы групп, поиск по мышцам и оборудованию, переключатель Все / Дома / Зал (как на образце, в нашей палитре) */
+#s-grp .gp-zc{display:flex;gap:8px;overflow-x:auto;margin:14px -16px 12px;padding:0 16px;scrollbar-width:none}
+#s-grp .gp-zc::-webkit-scrollbar{display:none}
+#s-grp .gp-zc button{flex:none;height:34px;padding:0 15px;border:0;border-radius:12px;background:none;box-shadow:inset 0 0 0 1px rgba(42,53,71,.9);font:inherit;font-size:14px;font-weight:500;color:#98A1B2;-webkit-tap-highlight-color:transparent}
+#s-grp .gp-zc button[aria-pressed="true"]{background:#202938;box-shadow:inset 0 0 0 1px rgba(242,229,205,.28);color:#F1EBDD;font-weight:600}
+#s-grp .srch{margin-top:0;margin-bottom:10px}
+#s-grp .gp-pl{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0 0 12px;padding:3px;border-radius:14px;background:#151C28;box-shadow:inset 0 0 0 1px rgba(42,53,71,.65)}
+#s-grp .gp-pl button{display:flex;align-items:center;justify-content:center;gap:7px;height:34px;border:0;border-radius:11px;background:none;font:inherit;font-size:14px;font-weight:500;color:#98A1B2;-webkit-tap-highlight-color:transparent}
+#s-grp .gp-pl button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#s-grp .gp-pl button[aria-pressed="true"]{background:#202938;color:#F1EBDD;box-shadow:inset 0 0 0 1px rgba(242,229,205,.18)}
+#s-grp #grpR{margin-top:2px}
+#s-grp .gp[hidden],#s-grp #grpR[hidden]{display:none}
+#s-grp #grpR .ap-row .ic{overflow:hidden;border-radius:12px;background:#202938}#s-grp #grpR .ap-row .ic canvas{display:block;width:100%;height:100%}
+
+/* v76: упражнения в группе/поиске — квадратные плитки по 4 в ряд: кадр с мышцей, название, инвентарь */
+#s-grp .gx{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 6px}
+#s-grp #grpR .gx-t{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:0;padding:0;border:0;border-top:0;background:none;text-align:left;position:relative}
+#s-grp #grpR .gx-t .ic{width:100%;height:auto;aspect-ratio:1;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(242,229,205,.08)}
+#s-grp #grpR .gx-t b{margin-top:6px;font-size:12px;line-height:15px;font-weight:600;color:#F1EBDD;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+#s-grp #grpR .gx-t span{margin-top:1px;font-size:10.5px;line-height:13px;color:#98A1B2}
+#s-grp #grpR .gx-t i{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;background:#FFE6B8;color:#171A20;font-style:normal;font-size:12px;font-weight:700;line-height:20px;text-align:center}
+#s-grp #grpR .gx-t.sel .ic{box-shadow:inset 0 0 0 2px #FFE6B8}
 </style>
 </head>
 <body>
@@ -1097,7 +1136,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   <button id="btnMore" hidden></button>
   <div class="hm-hero" id="apToday">
     <div class="hm-art"><div class="hm-top2"><b>one%</b><span class="ap-date" id="hmDate"></span></div>
-    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-pl" id="hmMzPl"><svg viewBox="0 0 1024 1536" preserveAspectRatio="none"><g data-g="chest"><path d="M509 319C503 309 486 312 475 310C464 308 452 308 440 309C428 310 415 311 405 314C395 317 388 320 382 325C377 330 374 337 371 345C368 353 368 365 368 375C367 385 367 396 368 405C368 414 368 421 371 428C374 434 377 440 382 445C388 450 396 454 405 458C414 462 425 466 435 469C445 472 455 474 465 474C475 474 485 472 492 469C500 466 505 466 508 459C510 452 510 440 510 425C510 410 510 388 510 370C510 352 515 329 509 319Z"/><path d="M516 319C522 309 538 312 550 310C562 308 573 308 585 309C597 310 610 311 620 314C630 317 639 320 645 325C651 330 652 337 654 345C656 353 657 365 658 375C658 385 658 396 658 405C657 414 655 422 652 430C650 438 646 444 640 450C634 456 624 461 615 465C606 469 595 472 585 474C575 476 564 475 555 474C546 473 536 470 530 468C524 465 518 466 516 459C514 452 515 440 515 425C515 410 515 388 515 370C515 352 510 329 516 319Z"/></g><g data-g="shoulders"><path d="M392 311C390 308 375 305 365 305C355 305 341 306 330 310C319 314 307 322 300 330C293 338 289 350 286 360C283 370 282 380 281 390C280 400 281 411 282 420C284 429 286 436 290 442C294 449 300 456 305 460C310 464 317 466 322 465C328 464 335 458 340 452C345 447 352 438 355 430C358 422 360 414 361 405C362 396 362 385 362 375C363 365 362 354 365 345C368 336 373 328 378 322C382 317 395 314 392 311Z"/><path d="M635 311C639 308 659 305 670 306C681 307 692 309 700 315C708 321 715 330 720 340C725 350 728 363 730 375C732 387 733 399 732 410C732 421 732 432 729 440C726 448 722 456 718 460C713 464 706 467 700 466C694 465 688 461 682 455C677 449 672 441 669 432C666 424 664 415 662 405C661 395 662 385 661 375C660 365 661 354 659 345C657 336 652 328 648 322C644 317 631 314 635 311Z"/></g><g data-g="biceps"><path d="M328 465C335 465 343 465 348 470C352 475 355 486 356 495C357 504 357 516 356 525C355 534 353 542 350 550C347 558 342 568 338 572C332 578 327 580 320 580C313 580 304 575 298 570C291 565 285 556 281 548C277 539 276 529 276 520C276 511 278 499 282 491C287 483 298 475 305 471C312 467 320 465 328 465Z"/><path d="M690 465C683 465 675 468 670 472C665 478 664 486 662 495C661 504 661 516 662 525C664 534 666 542 669 550C672 558 677 568 682 572C688 578 694 580 700 580C706 580 713 575 718 570C722 565 725 556 728 548C730 539 730 529 730 520C730 511 728 500 725 492C722 485 718 477 712 472C707 468 697 465 690 465Z"/></g></svg></div><canvas class="mz-cv" id="hmMzCv" width="1024" height="1536"></canvas><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
+    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-pl" id="hmMzPl"><svg viewBox="0 0 1024 1536" preserveAspectRatio="none"><g data-g="chest"><path d="M502 319C498 314 489 317 481 317C473 317 462 318 453 319C444 320 434 321 424 325C414 329 403 336 396 342C389 348 384 355 380 361C376 367 373 372 371 379C369 386 368 394 368 400C368 406 368 412 370 418C372 424 375 431 379 437C383 443 389 448 396 453C403 458 411 462 419 465C427 468 435 470 444 472C453 474 466 474 475 474C484 474 490 472 495 469C500 466 504 466 506 459C508 452 509 442 510 430C511 418 510 402 510 388C510 374 509 358 508 346C507 334 506 324 502 319Z"/><path d="M523 319C528 314 536 317 544 317C552 317 562 318 571 319C580 320 590 321 599 325C608 329 619 336 626 342C633 348 638 355 642 361C646 367 649 372 651 379C653 386 654 394 654 400C654 406 654 412 652 418C650 424 647 431 643 437C639 443 632 448 626 453C620 458 612 462 604 465C596 468 588 470 579 472C570 474 557 474 549 474C541 474 535 472 530 469C525 466 522 466 519 459C516 452 516 442 515 430C514 418 515 402 515 388C515 374 516 358 517 346C518 334 518 324 523 319Z"/></g><g data-g="shoulders"><path d="M392 311C390 308 375 305 365 305C355 305 341 306 330 310C319 314 307 322 300 330C293 338 289 350 286 360C283 370 282 380 281 390C280 400 281 411 282 420C284 429 286 436 290 442C294 449 300 456 305 460C310 464 317 466 322 465C328 464 335 458 340 452C345 447 352 438 355 430C358 422 360 414 361 405C362 396 362 385 362 375C363 365 362 354 365 345C368 336 373 328 378 322C382 317 395 314 392 311Z"/><path d="M635 311C639 308 659 305 670 306C681 307 692 309 700 315C708 321 715 330 720 340C725 350 728 363 730 375C732 387 733 399 732 410C732 421 732 432 729 440C726 448 722 456 718 460C713 464 706 467 700 466C694 465 688 461 682 455C677 449 672 441 669 432C666 424 664 415 662 405C661 395 662 385 661 375C660 365 661 354 659 345C657 336 652 328 648 322C644 317 631 314 635 311Z"/></g><g data-g="biceps"><path d="M328 465C335 465 343 465 348 470C352 475 355 486 356 495C357 504 357 516 356 525C355 534 353 542 350 550C347 558 342 568 338 572C332 578 327 580 320 580C313 580 304 575 298 570C291 565 285 556 281 548C277 539 276 529 276 520C276 511 278 499 282 491C287 483 298 475 305 471C312 467 320 465 328 465Z"/><path d="M690 465C683 465 675 468 670 472C665 478 664 486 662 495C661 504 661 516 662 525C664 534 666 542 669 550C672 558 677 568 682 572C688 578 694 580 700 580C706 580 713 575 718 570C722 565 725 556 728 548C730 539 730 529 730 520C730 511 728 500 725 492C722 485 718 477 712 472C707 468 697 465 690 465Z"/></g></svg></div><canvas class="mz-cv" id="hmMzCv" width="1024" height="1536"></canvas><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
     <div class="hm-figs" id="hmFigs"><div class="hm-fig f" id="hmF"></div><div class="hm-fig b" id="hmB"></div></div></div>
 <div class="hv-head"><button class="hv-gear" id="hvGear" aria-label="Профиль"><svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button></div><button class="hv-ttl" id="hvTtl"><span>Сегодня</span><b><em id="hmTitle">Верх тела</em><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="hv-chip l1" data-g="shoulders"><span>Плечи</span><b id="hmC_shoulders">82%</b><i><s id="hmBar_shoulders" style="width:82%"></s></i></div><div class="hv-chip r1" data-g="chest"><span>Грудь</span><b id="hmC_chest">76%</b><i><s id="hmBar_chest" style="width:76%"></s></i></div><div class="hv-chip l2" data-g="biceps"><span>Бицепс</span><b id="hmC_biceps">68%</b><i><s id="hmBar_biceps" style="width:68%"></s></i></div><div class="hv-chip r2" data-g="abs"><span>Пресс</span><b id="hmC_abs">88%</b><i><s id="hmBar_abs" style="width:88%"></s></i></div><svg class="hv-lines" id="hvLines"></svg>
     <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span><span class="hm-sf" id="hmPillFire" hidden>🔥 <b id="hmPillN"></b></span></div>
@@ -1182,7 +1221,9 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 <section class="screen" id="s-grp" data-app>
   <h1 class="gp-h">Упражнения</h1>
   <p class="gp-sub" id="grpSub">Выбери группу мышц</p>
-  <label class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="grpQ" type="search" placeholder="Поиск упражнений" autocomplete="off" enterkeyhint="search"></label>
+  <div class="gp-zc" id="grpZc"></div>
+  <label class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="grpQ" type="search" placeholder="Упражнение, мышца или инвентарь" autocomplete="off" enterkeyhint="search"></label>
+  <div class="gp-pl" id="grpPl"><button data-p="all"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>Все</button><button data-p="home"><svg viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5M6.5 9.5V19h11V9.5"/></svg>Дома</button><button data-p="gym"><svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Зал</button></div>
   <div class="gp" id="grpG"></div>
   <div id="grpR" hidden></div>
 </section>
@@ -1337,7 +1378,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 71;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 85;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1844,8 +1885,17 @@ function homeV57(p){
   $('hmTitle').textContent = z.length && z.length <= 3 ? z.map(x => ZNAME[x]).join(' · ') : z.length ? 'Всё тело' : 'Тренировка';   // по факту: Грудь · Спина · Ноги
   Object.keys(HM_DEF).forEach(g => { const r = recoveryOf(g), v = r ? r.pct : HM_DEF[g]; $('hmC_' + g).textContent = v + '%'; $('hmBar_' + g).style.width = v + '%'; });
   hmTarget = [...new Set(z.flatMap(x => ZONE_TO_GROUPS[x] || []))].filter(g => MUSCLE_HIT[g]);
+  heroSwap(z);
   renderWeek();
   requestAnimationFrame(hvLines);
+}
+// готовые картинки персонажа с закрашенной мышцей дня (по одной на группу)
+const HERO_IMG = { chest: 'img/hero_chest.webp', shoulders: 'img/hero_shoulders.webp', abs: 'img/hero_abs.webp', traps: 'img/hero_traps.webp' };   // ключ — зона дня
+function heroSwap(zs){
+  const cine = document.querySelector('#apToday .hm-cine'), im = cine && cine.querySelector('img.ch'); if (!im) return;
+  const src = zs && zs.length === 1 && HERO_IMG[zs[0]] || 'img/hero_char.webp';
+  cine.classList.toggle('baked', src !== 'img/hero_char.webp');
+  if (!im.getAttribute('src').endsWith(src)) im.setAttribute('src', src);
 }
 // «План на неделю»: дни из анкеты (data.wd) обведены, сделанные — кремовые с галочкой.
 // Галочку за прошедший или сегодняшний день можно поставить/снять вручную (MK), тренировки из истории снять нельзя.
@@ -1901,12 +1951,13 @@ const MZI = new Image(); MZI.src = 'img/hero_char.webp'; let MZM = null;
 function mzPaint(){
   const cv = $('hmMzCv'); if (!cv) return; if (!MZI.complete || !MZI.naturalWidth) { MZI.onload = mzPaint; return; }
   const W = cv.width, H = cv.height, c = cv.getContext('2d'); c.clearRect(0, 0, W, H);
+  if (cv.closest('.hm-cine') && cv.closest('#apToday').querySelector('.hm-cine.baked')) return;
   const gs = [...document.querySelectorAll('#hmMzPl g')].filter(el => +el.dataset.o > 0); if (!gs.length) return;
   MZM = MZM || document.createElement('canvas'); MZM.width = W; MZM.height = H; const m = MZM.getContext('2d'); m.filter = 'blur(1.5px)'; m.fillStyle = '#fff';
   gs.forEach(el => { m.globalAlpha = +el.dataset.o; el.querySelectorAll('path').forEach(p => m.fill(new Path2D(p.getAttribute('d')))); });
   c.drawImage(MZI, 0, 0, W, H);
-  c.globalCompositeOperation = 'color'; c.fillStyle = '#6B2E3A'; c.fillRect(0, 0, W, H);
-  c.globalCompositeOperation = 'multiply'; c.globalAlpha = .45; c.fillRect(0, 0, W, H); c.globalAlpha = 1;
+  c.globalCompositeOperation = 'color'; c.fillStyle = '#7A3D47'; c.fillRect(0, 0, W, H);
+  c.globalCompositeOperation = 'multiply'; c.globalAlpha = .2; c.fillRect(0, 0, W, H); c.globalAlpha = 1;
   c.globalCompositeOperation = 'destination-in'; c.drawImage(MZI, 0, 0, W, H); c.drawImage(MZM, 0, 0);
   c.globalCompositeOperation = 'source-over';
 }
@@ -2268,27 +2319,62 @@ function renderLib(){ const ids = EX.filter(e => e[2] === libZ).map(e => e[0]), 
   $('libG').querySelectorAll('.lx-row').forEach((r, i) => r.style.animationDelay = i * .04 + 's'); }
 $('libEq').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; libEq = b.dataset.v === libEq ? 'all' : b.dataset.v; haptic(); renderLib(); });
 // папки групп мышц: плитка = своя мышца на фигуре
+const GRP_TH = 46;   // размер миниатюры группы
+// миниатюры групп: кадр нашего персонажа (hero_char) на нужной мышце, мышца перекрашена в #6B2E3A по контуру
+const GRP_Z = {"traps": ["M455 250C459 256 464 290 458 300C452 310 434 310 420 312C406 314 384 313 372 312C360 311 342 310 345 306C348 302 378 293 392 286C406 279 422 270 432 264C442 258 451 244 455 250Z", "M568 250C564 256 559 290 565 300C571 310 588 310 603 312C618 314 639 313 652 312C665 311 683 310 680 306C677 302 647 293 632 286C617 279 603 270 592 264C581 258 572 244 568 250Z"], "abs": ["M447 468C459 458 490 462 512 462C534 462 566 458 578 468C590 478 585 501 586 520C587 539 585 564 582 582C579 600 582 619 570 630C558 641 531 646 512 646C493 646 466 641 454 630C442 619 445 600 442 582C439 564 437 539 438 520C439 501 435 478 447 468Z"], "back": ["M370 428C372 420 391 438 398 452C405 466 412 494 414 515C416 536 415 570 412 578C409 586 403 579 398 566C393 553 389 523 384 500C379 477 368 436 370 428Z", "M654 428C652 420 633 438 626 452C619 466 612 494 610 515C608 536 609 570 612 578C615 586 621 579 626 566C631 553 635 523 640 500C645 477 656 436 654 428Z"], "legs": ["M345 878C365 867 446 884 468 896C490 908 481 928 480 950C479 972 470 1011 462 1030C454 1049 443 1057 432 1062C421 1067 407 1069 396 1062C385 1055 374 1039 366 1022C358 1005 354 986 350 962C346 938 325 889 345 878Z", "M532 896C553 884 645 867 670 878C695 889 681 938 680 962C679 986 671 1005 662 1022C653 1039 640 1055 628 1062C616 1069 603 1067 592 1062C581 1057 570 1049 562 1030C554 1011 549 972 544 950C539 928 511 908 532 896Z"], "glutes": ["M352 690C358 674 373 669 378 684C383 699 385 752 384 780C383 808 378 836 372 850C366 864 355 878 350 866C345 854 342 809 342 780C342 751 346 706 352 690Z", "M672 690C666 674 651 669 646 684C641 699 639 752 640 780C641 808 646 836 652 850C658 864 669 878 674 866C679 854 682 809 682 780C682 751 678 706 672 690Z"]};
+const GRP_WIN = { chest: [512, 440, 430], back: [512, 500, 470], traps: [512, 350, 620], shoulders: [512, 450, 560], arms: [330, 560, 330], abs: [512, 560, 360], glutes: [512, 790, 560], legs: [512, 1010, 480] };
+function grpPaths(z){ const g = z === 'arms' ? 'biceps' : z; const el = document.querySelector(`#hmMzPl g[data-g=${g}]`);
+  return el && ['chest', 'shoulders', 'biceps'].includes(g) ? [...el.querySelectorAll('path')].map(p => p.getAttribute('d')) : (GRP_Z[z] || []); }
+function grpThumb(el, z, ar){   // ar — ширина/высота кадра
+  ar = ar || 1; const sw = 320, sh = Math.round(sw / ar), c = document.createElement('canvas'); c.width = sw; c.height = sh; el.innerHTML = ''; el.appendChild(c);
+  const draw = () => { const W = 1024, H = 1536, [cx, cy, w] = GRP_WIN[z] || [512, 500, 400];
+    const m = document.createElement('canvas'); m.width = W; m.height = H; const mc = m.getContext('2d'); mc.filter = 'blur(2px)'; mc.fillStyle = '#fff'; grpPaths(z).forEach(d => mc.fill(new Path2D(d)));
+    const o = document.createElement('canvas'); o.width = W; o.height = H; const oc = o.getContext('2d'); oc.drawImage(MZI, 0, 0, W, H);
+    if (z === 'glutes') { oc.globalAlpha = .75; oc.fillStyle = '#6B2E3A'; oc.fillRect(0, 0, W, H); oc.globalAlpha = 1; }   // спереди ягодицы под шортами — просто тон
+    else { oc.globalCompositeOperation = 'color'; oc.fillStyle = '#6B2E3A'; oc.fillRect(0, 0, W, H); oc.globalCompositeOperation = 'multiply'; oc.globalAlpha = .45; oc.fillRect(0, 0, W, H); oc.globalAlpha = 1; }
+    oc.globalCompositeOperation = 'destination-in'; oc.drawImage(MZI, 0, 0, W, H); oc.drawImage(m, 0, 0);
+    const hh = w / ar, x = c.getContext('2d'); x.fillStyle = '#202938'; x.fillRect(0, 0, sw, sh);
+    x.drawImage(MZI, cx - w / 2, cy - hh / 2, w, hh, 0, 0, sw, sh); x.drawImage(o, cx - w / 2, cy - hh / 2, w, hh, 0, 0, sw, sh); };
+  if (MZI.complete && MZI.naturalWidth) draw(); else MZI.addEventListener('load', draw, { once: true });
+}
+// фильтры раздела: группа (чипы) и место (Дома — свой вес и гантели, Зал — штанга, тренажёры, гантели)
+let grpZ = 'all', grpP = 'all';
+const PLACE = { home: ['home', 'db'], gym: ['bar', 'mach', 'db'] }, EQW = { bar: 'Штанга', db: 'Гантели', mach: 'Тренажёр', home: 'Свой вес' };
+const exEq = id => (EXCARD[id] || {}).eq, placeOk = id => grpP === 'all' || PLACE[grpP].includes(exEq(id));
+const grpIds = z => EX.filter(e => e[2] === z && placeOk(e[0])).map(e => e[0]);
+function renderGrpBar(){
+  $('grpZc').innerHTML = [['all', 'Все'], ...['chest', 'back', 'shoulders', 'arms', 'abs', 'legs', 'traps', 'glutes'].filter(z => KEYS.includes(z)).map(z => [z, ZNAME[z]])]
+    .map(([z, t]) => `<button data-z="${z}" aria-pressed="${grpZ === z}">${t}</button>`).join('');
+  $('grpPl').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.p === grpP));
+}
+function grpList(ids){   // список упражнений: для выбранной группы, поиска и фильтра места
+  $('grpG').hidden = true; $('grpR').hidden = false;
+  $('grpR').innerHTML = ids.length ? '<div class="gx">' + ids.map(id => `<button class="ap-row gx-t${PICK && PICK.includes(id) ? ' sel' : ''}" data-id="${id}"><div class="ic"></div><b>${EXI[id][1]}</b><span>${EQW[exEq(id)] || ''}</span>${PICK && PICK.includes(id) ? '<i>✓</i>' : ''}</button>`).join('') + '</div>' : '<div class="sr-empty">Ничего не нашлось</div>';
+  $('grpR').querySelectorAll('.ap-row').forEach(r => grpThumb(r.firstChild, EXI[r.dataset.id][2], 1));   // та же миниатюра с подсвеченной мышцей
+}
 function renderGrp(){
-  $('grpQ').value = ''; $('grpR').hidden = true; $('grpG').hidden = false;
-  $('grpG').innerHTML = KEYS.map(z => { const n = EX.filter(e => e[2] === z).length;
+  $('grpQ').value = ''; renderGrpBar();
+  if (grpZ !== 'all') return grpList(grpIds(grpZ));
+  $('grpR').hidden = true; $('grpG').hidden = false;
+  const GRP_ORD = ['chest', 'back', 'shoulders', 'arms', 'abs', 'legs', 'traps', 'glutes'];   // две последние — широкие плитки
+  $('grpG').innerHTML = GRP_ORD.filter(z => KEYS.includes(z) && grpIds(z).length).map(z => { const n = grpIds(z).length;
     const c = PICK ? PICK.filter(id => EXI[id][2] === z).length : 0;
-    return `<button class="gp-t" data-z="${z}"><div class="ph"></div>${c ? `<span class="cnt">${c}</span>` : ''}<div class="cap"><b>${ZNAME[z]}</b><span>${n} ${plural(n, 'упражнение', 'упражнения', 'упражнений')}</span></div></button>`; }).join('');
-  $('grpSub').textContent = PICK ? 'Выбери упражнения для тренировки' : 'Выбери группу мышц';
-  const tw = Math.round((Math.min(innerWidth, 480) - 40 - 20) / 3), th = Math.round(tw * 1.25);
-  $('grpG').querySelectorAll('.gp-t').forEach((t, i) => { const z = t.dataset.z, v = LIBV[z], ph = t.firstChild;
-    miniFig(ph, v, new Set([z])); figCrop(ph, v, z, tw, th, Math.round(th * 2.9), .5, data.sex === 'female' && z === 'chest' ? .2 : .42); t.style.animationDelay = i * .03 + 's'; });
+    return `<button class="gp-t" data-z="${z}"><div class="ph"></div>${c ? `<span class="cnt">${c}</span>` : ''}<div class="cap"><b>${ZNAME[z]}</b><span>${n} ${plural(n, 'упражнение', 'упражнения', 'упражнений')}</span></div><svg class="gp-ch" viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></button>`; }).join('');
+  $('grpSub').textContent = PICK ? 'Выбери упражнения для тренировки' : ''; $('grpSub').hidden = !PICK;   // заголовок раздела не нужен: он уже в нижнем меню
+  $('grpG').querySelectorAll('.gp-t').forEach((t, i) => { grpThumb(t.firstChild, t.dataset.z, t.matches('.gp-t:nth-child(n+7)') ? 1.75 : .82); t.style.animationDelay = i * .03 + 's'; });
 }
 // поиск по названию: вместо плиток групп — список найденных упражнений
 const norm = t => String(t || '').toLowerCase().replace(/ё/g, 'е');
-function renderSearch(){ const q = norm($('grpQ').value.trim()); $('grpG').hidden = !!q; $('grpR').hidden = !q; if (!q) return;
-  const ids = EX.filter(e => norm(e[1]).includes(q) || norm(ZNAME[e[2]]).includes(q)).map(e => e[0]);
-  $('grpR').innerHTML = ids.length ? ids.map(id => `<button class="ap-row" data-id="${id}"><div class="ic"></div><div><b>${EXI[id][1]}</b><span>${ZNAME[EXI[id][2]] || ''}</span></div><i>${PICK && PICK.includes(id) ? '✓' : '›'}</i></button>`).join('') : '<div class="sr-empty">Ничего не нашлось</div>';
-  $('grpR').querySelectorAll('.ap-row').forEach(r => { const z = EXI[r.dataset.id][2], v = LIBV[z]; miniFig(r.firstChild, v, new Set([z])); figCrop(r.firstChild, v, z, 44, 44, 150, .5, .5); }); }
+function renderSearch(){ const q = norm($('grpQ').value.trim()); if (!q) return renderGrp();
+  const hit = e => [e[1], ZNAME[e[2]], EQW[exEq(e[0])], EQN[exEq(e[0])], ...((EXCARD[e[0]] || {}).mus || [])].some(t => norm(t).includes(q));   // название, группа, оборудование, мышцы
+  grpList(EX.filter(e => KEYS.includes(e[2]) && (grpZ === 'all' || e[2] === grpZ) && placeOk(e[0]) && hit(e)).map(e => e[0])); }
+$('grpZc').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; grpZ = b.dataset.z; haptic(); const q = $('grpQ').value; renderGrp(); if (q) { $('grpQ').value = q; renderSearch(); } b.scrollIntoView({ inline: 'nearest', block: 'nearest' }); });
+$('grpPl').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; grpP = b.dataset.p; haptic(); const q = $('grpQ').value; renderGrp(); if (q) { $('grpQ').value = q; renderSearch(); } });
 $('grpQ').addEventListener('input', renderSearch);
 $('grpR').addEventListener('click', e => { const r = e.target.closest('.ap-row'); if (!r) return; const id = r.dataset.id;
   if (!PICK) { excFrom = 's-grp'; return openExCard(id); }
-  const k = PICK.indexOf(id); if (k < 0) PICK.push(id); else PICK.splice(k, 1); haptic(); pickSync(); renderSearch(); });
-$('grpG').addEventListener('click', e => { if (e.target.closest('#grpTest')) { libZ = 'test'; libEq = 'all'; haptic(); renderLib(); go('s-lib'); return; } const t = e.target.closest('.gp-t'); if (!t) return; libZ = t.dataset.z; libEq = 'all'; haptic(); renderLib(); go('s-lib'); $('libG').querySelectorAll('video').forEach(v => v.play().catch(() => {})); });
+  const k = PICK.indexOf(id); if (k < 0) PICK.push(id); else PICK.splice(k, 1); haptic(); pickSync(); $('grpQ').value.trim() ? renderSearch() : renderGrp(); });
+$('grpG').addEventListener('click', e => { if (e.target.closest('#grpTest')) { libZ = 'test'; libEq = 'all'; haptic(); renderLib(); go('s-lib'); return; } const t = e.target.closest('.gp-t'); if (!t) return; if (grpP !== 'all') { grpZ = t.dataset.z; haptic(); return renderGrp(); } libZ = t.dataset.z; libEq = 'all'; haptic(); renderLib(); go('s-lib'); $('libG').querySelectorAll('video').forEach(v => v.play().catch(() => {})); });
 // мышца → группа на нашей фигуре (отдельных мышц на фигуре нет: подсвечивается вся группа)
 const MZ = [[/плечева|бицепс|трицепс|предплеч/, 'arms'], [/груд/, 'chest'], [/трапец/, 'traps'], [/широчайш|ромбов|поясниц|спин/, 'back'], [/дельт|плеч/, 'shoulders'], [/пресс|косые/, 'abs'], [/ягодиц/, 'glutes'], [/квадр|бедр|икр|голен|ног/, 'legs']];
 const muscleZone = (name, dflt) => { const n = name.toLowerCase(), m = MZ.find(([re]) => re.test(n)); return m ? m[1] : dflt; };
