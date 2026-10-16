@@ -779,6 +779,74 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 #s-home .pt span{margin-top:5px;font-size:14px;line-height:18px}
 #s-home .pt .ta{bottom:16px;stroke:#98A1B2}
 @media (max-width:360px){#s-home .hm-pc>b,#s-home .hm-pc:last-child>b,#s-home .hm-pc.hm-pr .hm-ring b{font-size:22px;line-height:26px}#s-home .pt .ic{height:108px}#s-home .pt b{font-size:15px}#s-home .pt span{font-size:13px}}
+/* главная v53: без «Твой прогресс», персонаж на ~13% меньше, карта восстановления мышц */
+#s-home #homeProg{display:none!important}
+#s-home .hm-hero{--ch:min(470px,120vw)}
+#s-home .hm-sf{display:inline-flex;align-items:center;gap:4px;margin-left:10px;padding-left:10px;border-left:1px solid rgba(231,221,200,.2);font-weight:600}
+#s-home .hm-sf b{font-weight:700}
+#s-home .hm-sf[hidden]{display:none}
+@media (max-width:360px){#s-home .hm-pill{font-size:12px;letter-spacing:-.15px;padding:0 10px 0 8px;gap:5px;max-width:100%}#s-home .hm-sf{margin-left:6px;padding-left:6px}#s-home .hm-pill svg{width:13px;height:13px}}
+.mz{position:absolute;left:50%;top:6px;height:var(--ch);aspect-ratio:1024/1536;transform:translateX(-50%);pointer-events:none;z-index:3}
+.mz-hl{position:absolute;inset:0;mix-blend-mode:multiply;-webkit-mask:url(img/hero_char.webp) center/100% 100% no-repeat;mask:url(img/hero_char.webp) center/100% 100% no-repeat;transition:background-image .3s}
+.mz-hit{position:absolute;border:0;padding:0;margin:0;background:transparent;border-radius:50%;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mz-tip{position:absolute;left:0;right:0;top:10px;text-align:center;font-size:12px;line-height:16px;color:rgba(152,161,178,.85);pointer-events:none;z-index:3}
+.mz-tip[hidden]{display:none}
+.rc{position:absolute;right:12px;width:158px;padding:12px 14px 13px;border-radius:16px;background:rgba(11,16,24,.86);box-shadow:inset 0 0 0 1px rgba(231,221,200,.16);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:auto;z-index:4;color:#F1EBDD}
+.rc.lft{right:auto;left:12px}
+.rc[hidden]{display:none}
+.rc>b{display:block;font-size:15px;line-height:19px;font-weight:700;padding-right:18px}
+.rc-p{display:block;margin-top:4px;font-size:13px;line-height:17px;color:#98A1B2}.rc-p b{color:#F1EBDD;font-weight:700}
+.rc-bar{display:block;height:4px;margin-top:9px;border-radius:2px;background:#202938;overflow:hidden}
+.rc-bar s{display:block;height:100%;border-radius:2px;background:#E7DDC8;text-decoration:none}
+.rc-t{display:block;margin-top:8px;font-size:12px;line-height:15px;color:#98A1B2}
+.rc-x{position:absolute;top:6px;right:6px;width:28px;height:28px;border:0;background:none;color:#98A1B2;font-size:20px;line-height:1;padding:0}
+/* главная v54: компактный hero фиксированной высоты (не зависит от высоты экрана) */
+#s-home .hm-hero{--ch:400px}
+#s-home .hm-art{height:296px!important}
+#s-home .hm-cine{height:356px}
+#s-home #hmMzTip{display:none!important}
+#s-home .hm-pill{margin-top:-34px}
+@media (max-width:360px){#s-home .hm-hero{--ch:370px}#s-home .hm-art{height:276px!important}#s-home .hm-cine{height:336px}}
+/* главная v55: нормальный мобильный масштаб (размеры компонентов, без scale) */
+#s-home{padding-left:16px!important;padding-right:16px!important;padding-bottom:calc(76px + env(safe-area-inset-bottom))!important}
+#s-home .hm-hero{--ch:320px;margin:0 -16px;padding:0 20px 0}
+#s-home .hm-art{height:236px!important}
+#s-home .hm-cine{height:300px}
+#s-home .hm-pill{margin-top:-30px;height:32px;padding:0 12px 0 10px;gap:7px;font-size:12.5px;font-weight:600;max-width:calc(100% - 40px)}
+#s-home .hm-pill svg{width:13px;height:13px}
+#s-home .hm-sf{margin-left:8px;padding-left:8px}
+#s-home .hm-hero .btn.hm-cta,#s-home .hm-hero .hm-small{height:56px;margin-top:12px;font-size:17px;font-weight:600;border-radius:999px}
+#s-home .ap-card,#s-home .hm-lastrow{margin-top:12px}
+#s-home .ap-card:has(#homePlan){padding:12px 12px 12px;border-radius:22px}
+#s-home .ap-card:has(#homePlan) .ap-ch{margin-bottom:10px}
+#s-home .pl-h b{font-size:17px;line-height:21px}
+#s-home #planGo{font-size:14px}
+#s-home .pt{gap:10px}
+#s-home .pt button{border-radius:16px;padding:0 0 11px}
+#s-home .pt .ic{height:92px}
+#s-home .pt b{margin:9px 11px 0;font-size:15px;line-height:19px}
+#s-home .pt span{margin:3px 11px 0;font-size:12.5px;line-height:16px}
+#s-home .pt .ta{right:11px;bottom:11px;width:15px;height:15px}
+.hm-lastrow{min-height:64px;padding:11px 14px;border-radius:18px}
+.hm-lastrow .tx b{font-size:15px;line-height:19px}
+.hm-lastrow .tx span{font-size:13px;line-height:17px}
+.hm-lastrow .go{font-size:14px}.hm-lastrow .go svg{width:16px;height:16px}
+.tabbar{padding:6px 6px calc(4px + env(safe-area-inset-bottom))}
+.tabbar button{min-height:44px;gap:3px;font-size:10.5px}
+.tabbar svg{width:23px;height:23px}
+@media (max-width:360px){#s-home .hm-pill{max-width:100%;font-size:11.5px;letter-spacing:-.2px;padding:0 9px 0 8px;gap:5px}#s-home .hm-sf{margin-left:5px;padding-left:5px}#s-home .hm-hero{padding:0 16px}#s-home .hm-hero{--ch:300px}#s-home .hm-art{height:222px!important}#s-home .hm-cine{height:286px}#s-home .pt .ic{height:84px}#s-home .pt b{font-size:14px}#s-home .pt span{font-size:12px}}
+/* главная v56: вертикальный баланс на базе v55 (размер персонажа, шрифты и кнопка — как в v55) */
+#s-home .hm-art{height:298px!important}
+#s-home .hm-cine{height:362px}
+#s-home .hm-cine img,#s-home .mz{top:58px}
+#s-home .hm-hero .btn.hm-cta,#s-home .hm-hero .hm-small{margin-top:16px}
+#s-home .ap-card:has(#homePlan){margin-top:22px;padding:14px 12px 14px}
+#s-home .ap-card:has(#homePlan) .ap-ch{margin-bottom:12px}
+#s-home .pt .ic{height:120px}
+#s-home .pt b{margin-top:11px}
+#s-home .pt button{padding-bottom:13px}
+#s-home .hm-lastrow{margin-top:20px}
+@media (max-width:360px){#s-home .hm-art{height:222px!important}#s-home .hm-cine{height:286px}#s-home .hm-cine img,#s-home .mz{top:6px}#s-home .ap-card:has(#homePlan){margin-top:14px}#s-home .pt .ic{height:84px}#s-home .hm-lastrow{margin-top:12px}}
 </style>
 </head>
 <body>
@@ -921,9 +989,9 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   <button id="btnMore" hidden></button>
   <div class="hm-hero" id="apToday">
     <div class="hm-art"><div class="hm-top2"><b>one%</b><span class="ap-date" id="hmDate"></span></div>
-    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div></div>
+    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
     <div class="hm-figs" id="hmFigs"><div class="hm-fig f" id="hmF"></div><div class="hm-fig b" id="hmB"></div></div></div>
-    <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span></div>
+    <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span><span class="hm-sf" id="hmPillFire" hidden>🔥 <b id="hmPillN"></b></span></div>
     <button class="btn hm-cta" id="btnStart">Начать тренировку</button>
     <button class="hm-small" id="btnStartS" hidden>Начать тренировку</button>
   </div>
@@ -1159,7 +1227,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 52;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 56;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1608,6 +1676,85 @@ function streakWorkouts(now){
     else if (key !== today) break;                              // пропуск запланированной
   }
   return n; }
+
+// ===== восстановление мышц (оценка, не медицинское измерение) =====
+// Группы восстановления. hours — окно восстановления; позже можно задать своё для каждой группы и учитывать нагрузку.
+const RECOVERY = {
+  chest:      { name: 'Грудь',          hours: 48 },
+  back:       { name: 'Спина',          hours: 48 },
+  shoulders:  { name: 'Плечи',          hours: 48 },
+  biceps:     { name: 'Бицепс',         hours: 48 },
+  triceps:    { name: 'Трицепс',        hours: 48 },
+  quads:      { name: 'Квадрицепс',     hours: 48 },
+  hamstrings: { name: 'Бицепс бедра',   hours: 48 },
+  glutes:     { name: 'Ягодицы',        hours: 48 },
+  calves:     { name: 'Икры',           hours: 48 },
+  abs:        { name: 'Пресс',          hours: 48 },
+};
+// Единственное место соответствия: мышцы из карточек упражнений (EXCARD[id].mus) → группы восстановления.
+const MUS_TO_GROUP = {
+  'Грудь': 'chest', 'Верх груди': 'chest',
+  'Спина': 'back', 'Широчайшие': 'back', 'Ромбовидные': 'back', 'Трапеции': 'back', 'Поясница': 'back',
+  'Плечи': 'shoulders', 'Передние дельты': 'shoulders', 'Средние дельты': 'shoulders', 'Задние дельты': 'shoulders',
+  'Бицепс': 'biceps', 'Плечевая': 'biceps', 'Трицепс': 'triceps',
+  'Квадрицепсы': 'quads', 'Задняя поверхность бедра': 'hamstrings', 'Ягодицы': 'glutes', 'Икры': 'calves',
+  'Пресс': 'abs', 'Косые мышцы': 'abs',
+};
+// если у упражнения нет списка мышц — по зоне из каталога EX
+const ZONE_TO_GROUPS = { chest: ['chest'], back: ['back'], traps: ['back'], shoulders: ['shoulders'], arms: ['biceps', 'triceps'], abs: ['abs'], glutes: ['glutes'], legs: ['quads', 'hamstrings'] };
+function exGroups(id){ const c = EXCARD[id], e = EXI[id];
+  const g = c && c.mus ? c.mus.map(m => MUS_TO_GROUP[m]).filter(Boolean) : [];
+  return [...new Set(g.length ? g : (e ? ZONE_TO_GROUPS[e[2]] || [] : []))]; }
+// время последней завершённой тренировки каждой группы — из истории HIST (упражнения h.ex, иначе зоны h.z)
+function lastWorked(){ const r = {};
+  HIST.forEach(h => { const gs = (h.ex || []).length ? h.ex.flatMap(x => exGroups(x[0])) : (h.z || []).flatMap(z => ZONE_TO_GROUPS[z] || []);
+    gs.forEach(g => { if (!r[g] || h.t > r[g]) r[g] = h.t; }); });
+  return r; }
+function recoveryOf(g, now){ const t = lastWorked()[g]; if (!t) return null;
+  const win = (RECOVERY[g].hours || 48) * 3600000, el = (now || Date.now()) - t;
+  return { pct: Math.round(Math.max(0, Math.min(1, el / win)) * 100), left: Math.max(0, win - el) }; }
+// зоны нажатия на текущем персонаже (img/hero_char.webp, вид спереди): доли ширины/высоты картинки
+const MUSCLE_HIT = {
+  chest:     [[.405, .262, .09, .045], [.595, .262, .09, .045]],
+  shoulders: [[.305, .215, .05, .045], [.695, .215, .05, .045]],
+  biceps:    [[.272, .325, .036, .058], [.728, .325, .036, .058]],
+  abs:       [[.5, .37, .072, .078]],
+  quads:     [[.405, .665, .062, .085], [.595, .665, .062, .085]],
+};
+let mzSel = null;
+function mzGrad(list, a){ return list.map(([x, y, rx, ry]) => `radial-gradient(ellipse ${rx * 100}% ${ry * 100}% at ${x * 100}% ${y * 100}%, rgba(107,46,58,${a}) 0%, rgba(107,46,58,${a * .55}) 55%, rgba(107,46,58,0) 100%)`).join(','); }
+function renderRecovery(){
+  const mz = $('hmMz'); if (!mz) return;
+  if (!mz.dataset.ok) { mz.dataset.ok = 1;
+    Object.entries(MUSCLE_HIT).forEach(([g, list]) => list.forEach(([x, y, rx, ry]) => {
+      const b = document.createElement('button'); b.className = 'mz-hit'; b.dataset.g = g; b.setAttribute('aria-label', RECOVERY[g].name);
+      b.style.cssText = `left:${(x - rx) * 100}%;top:${(y - ry) * 100}%;width:${rx * 200}%;height:${ry * 200}%`; mz.appendChild(b); }));
+    mz.addEventListener('click', e => { const b = e.target.closest('.mz-hit'); if (!b) return; e.stopPropagation(); haptic(); mzOpen(mzSel === b.dataset.g ? null : b.dataset.g); });
+    $('hmRcX').onclick = e => { e.stopPropagation(); mzOpen(null); };
+    $('hmRc').onclick = e => e.stopPropagation();
+    document.addEventListener('click', () => { if (mzSel) mzOpen(null); });
+  }
+  // фоновая подсветка: только недавно нагруженные группы, едва заметно
+  const layers = [];
+  Object.keys(MUSCLE_HIT).forEach(g => { if (g === mzSel) return; const r = recoveryOf(g); if (r && r.pct < 100) layers.push(mzGrad(MUSCLE_HIT[g], (1 - r.pct / 100) * .5)); });
+  if (mzSel) layers.unshift(mzGrad(MUSCLE_HIT[mzSel], .82));
+  $('hmMzHl').style.backgroundImage = layers.join(',') || 'none';
+}
+function mzOpen(g){ mzSel = g; const rc = $('hmRc'); $('hmMzTip').hidden = !!g;
+  if (!g) { rc.hidden = true; renderRecovery(); return; }
+  const r = recoveryOf(g), list = MUSCLE_HIT[g], [x, y] = list[0];
+  $('hmRcN').textContent = RECOVERY[g].name;
+  if (!r) { $('hmRcP').textContent = 'Ещё не тренировалась'; $('hmRcB').style.width = '100%'; $('hmRcT').textContent = 'Готова к нагрузке'; }
+  else { $('hmRcP').innerHTML = `<b>${r.pct}%</b> восстановлена`; $('hmRcB').style.width = Math.max(r.pct, 3) + '%';
+    $('hmRcT').textContent = r.pct >= 100 ? 'Готова к нагрузке' : '~' + Math.max(1, Math.ceil(r.left / 3600000)) + ' ч до полного восстановления'; }
+  // карточка с той стороны, где нет выбранной мышцы, на её высоте
+  const mz = $('hmMz').getBoundingClientRect(), host = $('hmMz').parentNode.getBoundingClientRect();
+  // карточка сбоку и не поверх выбранной мышцы: под ней для верха тела, над ней для ног
+  const ry = Math.max(...list.map(e => e[3])), top = mz.top - host.top + (y - ry) * mz.height, bot = mz.top - host.top + (y + ry) * mz.height;
+  rc.hidden = false; rc.classList.toggle('lft', list.length === 1 && x < .5);
+  const t = y < .45 ? bot + 10 : top - rc.offsetHeight - 10;
+  rc.style.top = Math.max(30, Math.min(host.height - rc.offsetHeight - 80, t)) + 'px';
+  renderRecovery(); }
 function streakWeeks(){
   const weeks = new Set(HIST.map(h => dayKey(monday(new Date(h.t)))));
   let w = monday(new Date()), n = 0;
@@ -1708,7 +1855,8 @@ function renderHome(){
   $('hmRingT').textContent = pct + '%';
   $('hmRingV').style.strokeDashoffset = String(248.2 * (1 - Math.max(pct, 1) / 100)); $('hmRingV').style.opacity = pct ? 1 : 0;
   $('hmWk').textContent = wk + ' / ' + goalN;
-  const stw = streakWorkouts(); $('hmStreak').textContent = stw; $('hmFire').hidden = !stw;
+  const stw = streakWorkouts(); $('hmStreak').textContent = stw; $('hmFire').hidden = !stw; $('hmPillN').textContent = stw; $('hmPillFire').hidden = !stw || !!W;
+  renderRecovery();
   // мышцы дня — родные слои Runway на фигурах спереди и сзади
   const zs = new Set(p.zones); miniFig($('hmF'), 'front', zs); miniFig($('hmB'), 'back', zs);
   // готовность: насколько отдохнули мышцы сегодняшней тренировки (мышца отдыхает около трёх суток) — показывается в «Прогрессе»
@@ -1721,7 +1869,7 @@ function renderHome(){
   $('planGo').hidden = !!W; $('planGo').onclick = () => { haptic(); PICK = []; renderGrp(); go('s-grp'); };
   const tw = Math.round((Math.min(innerWidth, 480) - 40 - 28 - 12) / 2);
   $('homePlan').querySelectorAll('.pt button').forEach(r => { const z = EXI[r.dataset.id][2], v = LIBV[z], ic = r.firstChild;
-    miniFig(ic, v, new Set([z])); figCrop(ic, v, z, tw + 6, Math.min(innerWidth, 480) <= 360 ? 108 : 124, 470, .5, .5); r.onclick = () => { haptic(); excFrom = 's-home'; openExCard(r.dataset.id); }; });
+    miniFig(ic, v, new Set([z])); figCrop(ic, v, z, tw + 6, Math.min(innerWidth, 480) <= 360 ? 84 : 120, 420, .5, .5); r.onclick = () => { haptic(); excFrom = 's-home'; openExCard(r.dataset.id); }; });
   const ups = HIST.filter(h => Date.now() - h.t < 30*86400000).reduce((a,h) => a + (h.up||0), 0);
   const m30 = HIST.filter(h => Date.now() - h.t < 30*86400000).length;
   $('homeTiles').innerHTML = `<div><span>Всего тренировок</span><b>${HIST.length}</b></div><div><span>За месяц</span><b>${m30}</b></div>
