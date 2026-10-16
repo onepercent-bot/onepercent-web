@@ -1378,7 +1378,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 85;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 86;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1893,7 +1893,7 @@ function homeV57(p){
 const HERO_IMG = { chest: 'img/hero_chest.webp', shoulders: 'img/hero_shoulders.webp', abs: 'img/hero_abs.webp', traps: 'img/hero_traps.webp' };   // ключ — зона дня
 function heroSwap(zs){
   const cine = document.querySelector('#apToday .hm-cine'), im = cine && cine.querySelector('img.ch'); if (!im) return;
-  const src = zs && zs.length === 1 && HERO_IMG[zs[0]] || 'img/hero_char.webp';
+  const zk = (zs || []).find(k => HERO_IMG[k]), src = zk ? HERO_IMG[zk] : 'img/hero_char.webp';   // день из нескольких зон — картинка первой зоны, у которой она есть
   cine.classList.toggle('baked', src !== 'img/hero_char.webp');
   if (!im.getAttribute('src').endsWith(src)) im.setAttribute('src', src);
 }
