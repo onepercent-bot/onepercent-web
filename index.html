@@ -850,7 +850,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 
 /* главная v59: по референсу ChatGPT (hero с показателями вокруг персонажа, компактные карточки) */
 #s-home{padding:0 16px calc(96px + env(safe-area-inset-bottom))}
-#s-home #apToday{margin:0 -16px;padding:0;--v:var(--tg-viewport-stable-height,100dvh);--ch:min(118vw,560px,calc(var(--v) * .63));--ct:calc(var(--ch) * .093);--hh:calc(var(--ch) * .715);--r1:max(calc(var(--ct) + var(--ch) * .133),96px);--r2:calc(var(--r1) + max(var(--ch) * .148,52px));height:var(--hh)}   /* размеры hero считаются от ширины и высоты окна Telegram */
+#s-home #apToday{margin:0 -16px;padding:0;--v:var(--tg-viewport-stable-height,100dvh);--ch:min(118vw,560px,calc(var(--v) * .58));--ct:calc(var(--ch) * .093);--hh:calc(var(--ch) * .715);--r1:max(calc(var(--ct) + var(--ch) * .133),96px);--r2:calc(var(--r1) + max(var(--ch) * .148,52px));height:var(--hh)}   /* размеры hero считаются от ширины и высоты окна Telegram */
 #s-home #apToday .hm-art{height:var(--hh)!important}
 #s-home #apToday .hm-cine{height:var(--hh);overflow:hidden}
 #s-home #apToday .hm-cine .bg{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 92%,transparent 100%)}
@@ -930,6 +930,27 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 #s-home .mz-pl{display:none}
 #s-home .mz-cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
+
+/* v70: главная в один экран Telegram — меньше заголовок и кнопка, показатели без полосок (как подписи), компактные карточки */
+#s-home .hv-ttl b{font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.3px}
+#s-home .hv-ttl span{font-size:13.5px;line-height:17px}
+.hv-chip span{font-size:12.5px;line-height:15px}
+.hv-chip b{font-size:15px;line-height:19px;font-weight:500}
+.hv-chip i{display:none}
+#s-home .hm-reco{min-height:0;padding:9px 14px 9px 16px}
+#s-home .hm-reco p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#s-home .btn.hm-cta{height:48px;margin-top:8px;font-size:16px;font-weight:600}
+#s-home .ap-card.hv-wk{margin-top:8px;padding:9px 14px 9px}
+#s-home .hv-wk .ap-ch{margin:0 0 5px}
+#s-home .wk button{gap:4px}
+#s-home .ap-card.hm-ptop.hv-plan:has(#homePlan){margin-top:8px;padding:9px 7px 7px}
+#s-home .hv-plan .ap-ch{margin:0 0 7px}
+#s-home .hv-plan .pt button{min-height:58px;padding:6px 7px}
+#s-home .hv-plan .pt .ic{width:52px;height:46px}
+#s-home .hv-plan .pt button{grid-template-columns:52px 1fr}
+#s-home .hv-plan .pt b{-webkit-line-clamp:2}
+@media (max-width:360px){#s-home .hv-ttl b{font-size:20px;line-height:26px}}
+@media (max-width:389px){#s-home .hv-plan #planGo{display:none}}   /* на узких экранах «N упражнений · мин» не помещается рядом с заголовком */
 </style>
 </head>
 <body>
@@ -1078,7 +1099,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
     <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span><span class="hm-sf" id="hmPillFire" hidden>🔥 <b id="hmPillN"></b></span></div>
     <button class="hm-small" id="btnStartS" hidden>Начать тренировку</button>
   </div>
-  <div class="hm-reco" id="hmReco" role="button" tabindex="0"><div><b>Рекомендуемая тренировка</b><p>Собрана под твои цели, прошлые тренировки и&nbsp;отдых мышц.</p></div><svg viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></div>
+  <div class="hm-reco" id="hmReco" role="button" tabindex="0"><div><b>Рекомендуемая тренировка</b><p>По твоим целям, истории и отдыху мышц</p></div><svg viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></div>
   <button class="btn hm-cta" id="btnStart">Начать тренировку</button>
   <div class="ap-card hv-wk"><div class="ap-ch"><b>План на неделю</b><button class="ap-link" id="wkAll">Все<svg viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></button></div><div class="wk" id="hmWeek"></div></div>
   <div class="ap-card hm-prog" id="homeProg" role="button" tabindex="0">
@@ -1313,7 +1334,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 69;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 70;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
