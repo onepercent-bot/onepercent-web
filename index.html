@@ -847,6 +847,32 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 #s-home .pt button{padding-bottom:13px}
 #s-home .hm-lastrow{margin-top:20px}
 @media (max-width:360px){#s-home .hm-art{height:222px!important}#s-home .hm-cine{height:286px}#s-home .hm-cine img,#s-home .mz{top:6px}#s-home .ap-card:has(#homePlan){margin-top:14px}#s-home .pt .ic{height:84px}#s-home .hm-lastrow{margin-top:12px}}
+
+/* главная v57 (chatgpt/home-redesign): заголовок дня, проценты вокруг персонажа, рекомендуемая тренировка, неделя */
+#s-home .hm-ttl{position:absolute;left:20px;top:10px;z-index:4;display:flex;flex-direction:column;gap:2px}
+#s-home .hm-ttl span{font-size:12.5px;line-height:16px;font-weight:600;color:#98A1B2}
+#s-home .hm-ttl b{font-size:26px;line-height:30px;font-weight:700;letter-spacing:-.6px;color:#F1EBDD}
+#s-home .hm-chip{position:absolute;z-index:4;display:flex;flex-direction:column;gap:1px;min-width:78px;padding:7px 12px 8px;border-radius:14px;background:rgba(21,28,40,.82);box-shadow:inset 0 0 0 1px rgba(42,53,71,.65);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#s-home .hm-chip span{font-size:12px;line-height:15px;color:#98A1B2}
+#s-home .hm-chip b{font-size:17px;line-height:21px;font-weight:700;color:#F1EBDD}
+#s-home .hm-chip.c1{left:14px;top:112px}#s-home .hm-chip.c2{left:14px;top:178px}
+#s-home .hm-chip.c3{right:14px;top:178px;align-items:flex-end}#s-home .hm-chip.c4{right:14px;top:112px;align-items:flex-end}
+#s-home .hm-reco{margin-top:16px;padding:16px}
+#s-home .hm-reco>b{display:block;font-size:17px;line-height:22px;font-weight:600;color:#F1EBDD}
+#s-home .hm-reco p{margin:6px 0 0;font-size:13.5px;line-height:18px;color:#98A1B2}
+#s-home .hm-reco .btn.hm-cta{display:flex;align-items:center;justify-content:center;width:100%;height:56px;margin-top:14px;border:0;border-radius:999px;background:#E7DDC8;color:#171A20;font-size:17px;font-weight:600;box-shadow:none}
+#s-home .hm-reco[hidden]{display:none}
+#s-home .hm-wk{margin-top:12px;padding:14px 12px}
+#s-home .hm-wk .ap-ch b{font-size:17px;line-height:22px;font-weight:600}
+#s-home .wk{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:12px}
+#s-home .wk div{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#98A1B2}
+#s-home .wk i{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#202938;font-style:normal;font-size:14px;font-weight:700;color:#171A20}
+#s-home .wk .tr i{box-shadow:inset 0 0 0 1.5px rgba(231,221,200,.55)}
+#s-home .wk .dn i{background:#E7DDC8;box-shadow:none}
+#s-home .wk .now span{color:#F1EBDD;font-weight:700}
+#s-home .wk .now i{box-shadow:inset 0 0 0 2px #E7DDC8}#s-home .wk .now.dn i{box-shadow:none}
+#s-home .hm-ptop .ap-ch{align-items:center;gap:8px}#s-home .hm-ptop .pl-h b{font-size:15.5px;white-space:nowrap}#s-home #planGo{font-size:11.5px;letter-spacing:-.2px;color:#98A1B2;white-space:nowrap;flex:none}
+@media (max-width:360px){#s-home .hm-chip{min-width:68px;padding:6px 9px 7px}#s-home .hm-chip.c1,#s-home .hm-chip.c4{top:96px}#s-home .hm-chip.c2,#s-home .hm-chip.c3{top:154px}#s-home .hm-ttl b{font-size:23px}#s-home .wk i{width:30px;height:30px}#s-home .ap-card.hm-ptop:has(#homePlan) .ap-ch{flex-wrap:wrap;row-gap:4px}#s-home .hm-ptop .pl-h b{font-size:15px}}
 </style>
 </head>
 <body>
@@ -989,12 +1015,13 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   <button id="btnMore" hidden></button>
   <div class="hm-hero" id="apToday">
     <div class="hm-art"><div class="hm-top2"><b>one%</b><span class="ap-date" id="hmDate"></span></div>
-    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
+    <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="hm-ttl"><span>Сегодня</span><b id="hmTitle">Верх тела</b></div><div class="hm-chip c1" data-g="shoulders"><span>Плечи</span><b id="hmC_shoulders">82%</b></div><div class="hm-chip c2" data-g="chest"><span>Грудь</span><b id="hmC_chest">76%</b></div><div class="hm-chip c3" data-g="biceps"><span>Бицепс</span><b id="hmC_biceps">68%</b></div><div class="hm-chip c4" data-g="back"><span>Спина</span><b id="hmC_back">91%</b></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
     <div class="hm-figs" id="hmFigs"><div class="hm-fig f" id="hmF"></div><div class="hm-fig b" id="hmB"></div></div></div>
     <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span><span class="hm-sf" id="hmPillFire" hidden>🔥 <b id="hmPillN"></b></span></div>
-    <button class="btn hm-cta" id="btnStart">Начать тренировку</button>
     <button class="hm-small" id="btnStartS" hidden>Начать тренировку</button>
   </div>
+  <div class="ap-card hm-reco" id="hmReco"><b>Рекомендуемая тренировка</b><p>На основе восстановления мышц, вашей истории и доступного оборудования.</p><button class="btn hm-cta" id="btnStart">Начать тренировку</button></div>
+  <div class="ap-card hm-wk"><div class="ap-ch"><b>План на неделю</b></div><div class="wk" id="hmWeek"></div></div>
   <div class="ap-card hm-prog" id="homeProg" role="button" tabindex="0">
     <div class="ap-ch"><b>Твой прогресс</b><svg class="chev" viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></div>
     <div class="hm-pg">
@@ -1003,7 +1030,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
       <div class="hm-pc"><b><span id="hmFire">🔥 </span><span id="hmStreak"></span></b><span id="hmStreakL">Серия</span></div>
     </div>
   </div>
-  <div class="ap-card"><div class="ap-ch"><div class="pl-h"><b><i>✦</i> <span id="homePlanT">Твой план на сегодня</span></b><span class="pl-s" id="homePlanS">Подобран для тебя</span></div><button class="ap-link" id="planGo">Все<svg viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></button></div><div id="homePlan"></div><button class="ap-go" id="btnOwn">Своя программа</button></div>
+  <div class="ap-card hm-ptop"><div class="ap-ch"><div class="pl-h"><b><i>✨</i> <span id="homePlanT">Твой план на сегодня</span></b><span class="pl-s" id="homePlanS">Подобран для тебя</span></div><button class="ap-link" id="planGo">6 упражнений · ~52 мин</button></div><div id="homePlan"></div><button class="ap-go" id="btnOwn">Своя программа</button></div>
   <button class="hm-lastrow" id="homeLastRow" hidden><div class="tx"><b>Прошлая тренировка</b><span id="homeLastRowT"></span></div><span class="go"><i>Посмотреть</i><svg viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span></button>
   <div class="ap-card" id="homeLastC" hidden><div class="ap-ch"><b>Прошлая тренировка</b><span id="homeLastD"></span></div><div id="homeLast"></div>
     <div class="pr-xd" id="homeLastX"><div id="homeLastL"></div></div>
@@ -1227,7 +1254,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 56;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 57;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1723,6 +1750,19 @@ const MUSCLE_HIT = {
 };
 let mzSel = null;
 function mzGrad(list, a){ return list.map(([x, y, rx, ry]) => `radial-gradient(ellipse ${rx * 100}% ${ry * 100}% at ${x * 100}% ${y * 100}%, rgba(107,46,58,${a}) 0%, rgba(107,46,58,${a * .55}) 55%, rgba(107,46,58,0) 100%)`).join(','); }
+// главная v57: заголовок дня, проценты восстановления вокруг персонажа, неделя
+const DEFKG = { incdb: 24, pecdeck: 45 };   // стартовые веса в плане, пока нет своей истории
+const HM_DEF = { shoulders: 82, chest: 76, biceps: 68, back: 91 };   // показывается, пока по мышце нет истории
+let hmTarget = [];
+function homeV57(p){
+  const up = ['chest','back','traps','shoulders','arms','abs'].slice(0, 5), z = p.zones || [];
+  $('hmTitle').textContent = z.length && z.every(x => up.includes(x)) ? 'Верх тела' : z.length && z.every(x => x === 'legs' || x === 'glutes') ? 'Низ тела' : z.length === 1 ? ZNAME[z[0]] : z.length ? 'Всё тело' : 'Тренировка';
+  Object.keys(HM_DEF).forEach(g => { const r = recoveryOf(g); $('hmC_' + g).textContent = (r ? r.pct : HM_DEF[g]) + '%'; });
+  hmTarget = [...new Set(z.flatMap(x => ZONE_TO_GROUPS[x] || []))].filter(g => MUSCLE_HIT[g]);
+  const t = new Date(), mon = monday(t), td = (t.getDay() + 6) % 7, done = new Set(HIST.filter(h => h.t >= mon.getTime()).map(h => (new Date(h.t).getDay() + 6) % 7));
+  $('hmWeek').innerHTML = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((n, i) => { const tr = !data.wd || data.wd.includes(i), dn = done.has(i);
+    return `<div class="${i === td ? 'now ' : ''}${tr ? 'tr ' : ''}${dn ? 'dn' : ''}"><span>${n}</span><i>${dn ? '✓' : ''}</i></div>`; }).join('');
+}
 function renderRecovery(){
   const mz = $('hmMz'); if (!mz) return;
   if (!mz.dataset.ok) { mz.dataset.ok = 1;
@@ -1737,6 +1777,7 @@ function renderRecovery(){
   // фоновая подсветка: только недавно нагруженные группы, едва заметно
   const layers = [];
   Object.keys(MUSCLE_HIT).forEach(g => { if (g === mzSel) return; const r = recoveryOf(g); if (r && r.pct < 100) layers.push(mzGrad(MUSCLE_HIT[g], (1 - r.pct / 100) * .5)); });
+  hmTarget.forEach(g => { if (g !== mzSel) layers.push(mzGrad(MUSCLE_HIT[g], .5)); });
   if (mzSel) layers.unshift(mzGrad(MUSCLE_HIT[mzSel], .82));
   $('hmMzHl').style.backgroundImage = layers.join(',') || 'none';
 }
@@ -1848,7 +1889,7 @@ function renderHome(){
   $('hmDate').textContent = now.toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
   $('homeStatus').textContent = W ? (W.edit ? 'Правка прошлой тренировки' : 'Тренировка не закончена') : rest ? 'Сегодня отдых' + (nxt ? ' · следующая ' + nxt : '') : 'Сегодня тренировка · день ' + (p.pd + 1) + ' из ' + nd;
   $('homePlanT').textContent = rest ? 'Следующая тренировка' : 'Твой план на сегодня';
-  $('btnStart').textContent = W ? 'Продолжить тренировку' : 'Начать тренировку';
+  $('btnStart').textContent = (W ? 'Продолжить тренировку' : 'Начать тренировку'); $('hmReco').hidden = rest;
   // карточка прогресса: неделя кольцом, серия, силовой прогресс
   const wks = streakWeeks(), sp = strengthPct();
   const pct = Math.min(100, Math.round(wk / Math.max(1, goalN) * 100));
@@ -1856,6 +1897,7 @@ function renderHome(){
   $('hmRingV').style.strokeDashoffset = String(248.2 * (1 - Math.max(pct, 1) / 100)); $('hmRingV').style.opacity = pct ? 1 : 0;
   $('hmWk').textContent = wk + ' / ' + goalN;
   const stw = streakWorkouts(); $('hmStreak').textContent = stw; $('hmFire').hidden = !stw; $('hmPillN').textContent = stw; $('hmPillFire').hidden = !stw || !!W;
+  homeV57(p, n, est);
   renderRecovery();
   // мышцы дня — родные слои Runway на фигурах спереди и сзади
   const zs = new Set(p.zones); miniFig($('hmF'), 'front', zs); miniFig($('hmB'), 'back', zs);
@@ -1864,9 +1906,9 @@ function renderHome(){
   // план на сегодня: строки с участком фигуры, нажатие открывает карточку упражнения
   $('homePlan').innerHTML = '<div class="pt">' + p.ids.slice(0, 2).map(id => { const e = EXI[id], c = EXCARD[id] || {}, pl = c.plan ? c.plan.split(' · ')[0] : '3 подхода';
     const lt = LAST[id] && LAST[id].length ? LAST[id].reduce((m, x) => x[0] > m[0] ? x : m) : null;
-    const sub = lt ? (lt[0] ? fmtKg(lt[0]) + ' × ' : '') + lt[1] : pl;
+    const kg = lt && lt[0] ? lt[0] : DEFKG[id], sub = (parseInt(c.plan) || 3) + ' × ' + (p.reps || 10) + (kg ? ' · ' + fmtKg(kg) : '');
     return `<button data-id="${id}"><div class="ic"></div><b>${e[1].replace(/ \(.*\)/, '')}</b><span>${sub}</span><svg class="ta" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></button>`; }).join('') + '</div>';
-  $('planGo').hidden = !!W; $('planGo').onclick = () => { haptic(); PICK = []; renderGrp(); go('s-grp'); };
+  $('planGo').hidden = !!W; $('planGo').textContent = n + ' ' + exW + ' · ~' + Math.round(n * 8.7) + ' мин'; $('planGo').onclick = () => { haptic(); PICK = []; renderGrp(); go('s-grp'); };
   const tw = Math.round((Math.min(innerWidth, 480) - 40 - 28 - 12) / 2);
   $('homePlan').querySelectorAll('.pt button').forEach(r => { const z = EXI[r.dataset.id][2], v = LIBV[z], ic = r.firstChild;
     miniFig(ic, v, new Set([z])); figCrop(ic, v, z, tw + 6, Math.min(innerWidth, 480) <= 360 ? 84 : 120, 420, .5, .5); r.onclick = () => { haptic(); excFrom = 's-home'; openExCard(r.dataset.id); }; });
