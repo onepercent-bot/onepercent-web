@@ -719,8 +719,66 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 #s-home .hm-art{position:static}
 #s-home .hm-hero{z-index:0}#s-home .ap-card{position:relative;z-index:1}
 .pl-h{display:flex;flex-direction:column;gap:3px;min-width:0}.pl-h b i{font-style:normal;color:#E7DDC8}.pl-h b{color:#F1EBDD}
-.pl-s{font-size:12.5px;line-height:16px;color:#98A1B2}
+.pl-s{font-size:12.5px;line-height:16px;color:#98A1B2;text-align:left!important}.pl-h #homePlanT{font-size:inherit;color:inherit;text-align:left}
 #s-home .ap-card:has(#homePlan) .ap-ch{align-items:flex-start}
+/* главная v48: нормальные размеры, меньше лишнего */
+#s-home #btnOwn,#s-home #homeLastC,#s-home #homePlanS{display:none!important}
+#s-home .hm-hero{--ch:min(540px,138vw)}
+#s-home .hm-hero .btn.hm-cta,#s-home .hm-hero .hm-small{height:58px;font-size:17px}
+/* прогресс: три равных показателя */
+#s-home .ap-card.hm-prog{padding:16px 16px 18px}
+#s-home .hm-prog .ap-ch{margin-bottom:12px}
+#s-home .hm-pg{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:0;align-items:center}
+#s-home .hm-pc{margin:0;padding:0 6px;gap:4px;align-items:center;text-align:center;justify-content:center;border-left:0}
+#s-home .hm-pc+.hm-pc{border-left:1px solid rgba(42,53,71,.65)}
+#s-home .hm-pc.hm-pr{gap:6px}
+#s-home .hm-ring{width:64px;height:64px}#s-home .hm-ring svg{width:64px;height:64px}
+#s-home .hm-ring circle{stroke-width:4}#s-home .hm-ring b{font-size:17px;font-weight:700}
+#s-home .hm-pc>b{font-size:24px;line-height:28px;font-weight:700;color:#F1EBDD;white-space:nowrap}
+#s-home .hm-pc>b #hmFire{font:inherit;color:inherit}#s-home .hm-pc>b #hmFire[hidden]{display:none}
+#s-home .hm-pc>b #hmStreak{font:inherit;color:inherit;letter-spacing:inherit}
+#s-home .hm-pc:last-child>b{font-size:20px}
+#s-home .hm-pc>span,#s-home .hm-pc .mk{font-size:13px;line-height:17px;color:#98A1B2}
+/* план: заголовок одной строкой */
+#s-home .ap-card:has(#homePlan) .ap-ch{flex-wrap:nowrap;align-items:center;gap:10px}
+#s-home .pl-h b{font-size:18px;line-height:22px;white-space:nowrap}
+#s-home #planGo{flex:none;font-size:15px;margin:0}
+/* прошлая тренировка одной строкой */
+.hm-lastrow{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;padding:16px;border:0;border-radius:24px;background:#151C28;color:#F1EBDD;text-align:left}
+.hm-lastrow[hidden]{display:none}
+.hm-lastrow .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.hm-lastrow .tx b{font-size:16px;line-height:20px;font-weight:600}
+.hm-lastrow .tx span{font-size:14px;line-height:18px;color:#98A1B2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-lastrow .go{flex:none;display:flex;align-items:center;gap:6px;font-size:15px;color:#F1EBDD}
+.hm-lastrow .go i{font-style:normal}.hm-lastrow .go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hm-lastrow .tx b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:360px){.hm-lastrow{padding:14px}.hm-lastrow .tx b{font-size:15px}.hm-lastrow .go i{display:none}#s-home .hm-pc>b{font-size:20px}#s-home .hm-pc:last-child>b{font-size:16px}#s-home .hm-ring,#s-home .hm-ring svg{width:56px;height:56px}#s-home .pl-h b{font-size:16px}#s-home #planGo{font-size:14px}}
+/* план на сегодня: полноценные карточки */
+#s-home .pt{gap:12px}
+#s-home .pt button{border-radius:18px;padding:0 0 14px;min-height:0}
+#s-home .pt .ic{height:104px}
+#s-home .pt b{margin:10px 12px 0;padding-right:0;font-size:15px;line-height:19px;font-weight:600;color:#F1EBDD}
+#s-home .pt span{margin:4px 12px 0;padding-right:22px;font-size:13.5px;line-height:17px;color:#98A1B2}
+#s-home .pt .ta{right:12px;bottom:14px;width:17px;height:17px;stroke:#F1EBDD}
+@media (max-width:360px){#s-home .pt b{font-size:14px;line-height:18px}#s-home .pt span{font-size:12.5px}}
+/* главная v51: финальная доводка — единый ритм отступов, прогресс без кольца, крупнее план */
+#s-home .ap-card,#s-home .hm-lastrow{margin-top:16px}
+#s-home .ap-card.hm-prog{margin-top:20px;padding:18px 16px 20px}
+#s-home .hm-prog .ap-ch{margin-bottom:16px}
+#s-home .hm-pc.hm-pr .hm-ring{width:auto;height:auto;position:static}
+#s-home .hm-pc.hm-pr .hm-ring svg{display:none}
+#s-home .hm-pc.hm-pr .hm-ring b{position:static;display:block;font-size:26px;line-height:30px;font-weight:700;color:#F1EBDD}
+#s-home .hm-pc>b,#s-home .hm-pc:last-child>b{font-size:26px;line-height:30px}
+#s-home .hm-pc,#s-home .hm-pc.hm-pr{gap:4px;padding:2px 6px}
+#s-home .hm-pc>span,#s-home .hm-pc .mk{font-size:13px;line-height:16px}
+#s-home .ap-card:has(#homePlan){padding:16px 14px 16px}
+#s-home .ap-card:has(#homePlan) .ap-ch{margin-bottom:14px}
+#s-home .pt .ic{height:124px}
+#s-home .pt button{padding-bottom:16px}
+#s-home .pt b{margin-top:12px;font-size:16px;line-height:20px}
+#s-home .pt span{margin-top:5px;font-size:14px;line-height:18px}
+#s-home .pt .ta{bottom:16px;stroke:#98A1B2}
+@media (max-width:360px){#s-home .hm-pc>b,#s-home .hm-pc:last-child>b,#s-home .hm-pc.hm-pr .hm-ring b{font-size:22px;line-height:26px}#s-home .pt .ic{height:108px}#s-home .pt b{font-size:15px}#s-home .pt span{font-size:13px}}
 </style>
 </head>
 <body>
@@ -872,12 +930,13 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   <div class="ap-card hm-prog" id="homeProg" role="button" tabindex="0">
     <div class="ap-ch"><b>Твой прогресс</b><svg class="chev" viewBox="0 0 24 24"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></div>
     <div class="hm-pg">
-      <div class="hm-pc hm-pr"><div class="hm-ring"><svg viewBox="0 0 86 86"><circle class="t" cx="43" cy="43" r="39.5"/><circle class="v" id="hmRingV" cx="43" cy="43" r="39.5"/></svg><b id="hmRingT"></b></div></div>
-      <div class="hm-pc"><svg class="pi" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8 14.5h.01M12 14.5h.01M16 14.5h.01"/></svg><b id="hmWk"></b><span id="hmWkL"></span></div>
-      <div class="hm-pc"><svg class="pi" viewBox="0 0 24 24"><path d="M12 3c.6 3.2 4.5 5.2 4.5 9.6a4.5 4.5 0 0 1-9 0c0-1.8.8-3 1.7-4 .3 1.4 1 2 1.8 2.3C11 8.4 10.6 5.4 12 3z"/></svg><span class="pl">Серия</span><b id="hmStreak"></b><span id="hmStreakL"></span></div>
+      <div class="hm-pc hm-pr"><div class="hm-ring"><svg viewBox="0 0 86 86"><circle class="t" cx="43" cy="43" r="39.5"/><circle class="v" id="hmRingV" cx="43" cy="43" r="39.5"/></svg><b id="hmRingT"></b></div><span class="mk">Прогресс</span></div>
+      <div class="hm-pc"><b id="hmWk"></b><span id="hmWkL">Тренировки</span></div>
+      <div class="hm-pc"><b><span id="hmFire">🔥 </span><span id="hmStreak"></span></b><span id="hmStreakL">Серия</span></div>
     </div>
   </div>
-  <div class="ap-card"><div class="ap-ch"><div class="pl-h"><b><i>✦</i> <span id="homePlanT">Твой план на сегодня</span></b><span class="pl-s" id="homePlanS">Подобран под твою анкету</span></div><button class="ap-link" id="planGo">Все упражнения<svg viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></button></div><div id="homePlan"></div><button class="ap-go" id="btnOwn">Своя программа</button></div>
+  <div class="ap-card"><div class="ap-ch"><div class="pl-h"><b><i>✦</i> <span id="homePlanT">Твой план на сегодня</span></b><span class="pl-s" id="homePlanS">Подобран для тебя</span></div><button class="ap-link" id="planGo">Все<svg viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></button></div><div id="homePlan"></div><button class="ap-go" id="btnOwn">Своя программа</button></div>
+  <button class="hm-lastrow" id="homeLastRow" hidden><div class="tx"><b>Прошлая тренировка</b><span id="homeLastRowT"></span></div><span class="go"><i>Посмотреть</i><svg viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span></button>
   <div class="ap-card" id="homeLastC" hidden><div class="ap-ch"><b>Прошлая тренировка</b><span id="homeLastD"></span></div><div id="homeLast"></div>
     <div class="pr-xd" id="homeLastX"><div id="homeLastL"></div></div>
     <div class="hm-acts" id="homeLastAct"><button id="lastView">Посмотреть</button><button id="lastEdit" class="ed"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Изменить</button></div></div>
@@ -1100,7 +1159,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 45;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 52;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1533,6 +1592,22 @@ const fmtKg = n => (Math.round(n*10)/10).toLocaleString('ru-RU') + ' кг';
 const fmtDur = sec => { const m = Math.floor(sec/60), h = Math.floor(m/60); return h ? h + ' ч ' + (m%60) + ' мин' : Math.max(1,m) + ' мин'; };
 const dayKey = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 const monday = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; };
+// серия в тренировках: подряд выполненные запланированные тренировки (дни из data.wd).
+// День отдыха серию не меняет; пропущенный запланированный день сбрасывает её.
+// Сегодняшний запланированный день, пока не выполнен, пропуском не считается.
+function streakWorkouts(now){
+  if (!HIST.length) return 0;
+  const wd = (data.wd && data.wd.length ? data.wd : defaultWd(+data.days || 3)), done = new Set(HIST.map(h => dayKey(new Date(h.t))));
+  const first = new Date(Math.min(...HIST.map(h => h.t))); first.setHours(0, 0, 0, 0);
+  const d = new Date(now || Date.now()); d.setHours(0, 0, 0, 0); const today = dayKey(d);
+  let n = 0;
+  for (let k = 0; k < 800 && d >= first; k++, d.setDate(d.getDate() - 1)) {
+    if (!wd.includes((d.getDay() + 6) % 7)) continue;          // день отдыха
+    const key = dayKey(d);
+    if (done.has(key)) n++;
+    else if (key !== today) break;                              // пропуск запланированной
+  }
+  return n; }
 function streakWeeks(){
   const weeks = new Set(HIST.map(h => dayKey(monday(new Date(h.t)))));
   let w = monday(new Date()), n = 0;
@@ -1632,8 +1707,8 @@ function renderHome(){
   const pct = Math.min(100, Math.round(wk / Math.max(1, goalN) * 100));
   $('hmRingT').textContent = pct + '%';
   $('hmRingV').style.strokeDashoffset = String(248.2 * (1 - Math.max(pct, 1) / 100)); $('hmRingV').style.opacity = pct ? 1 : 0;
-  $('hmWk').textContent = wk; $('hmWkL').innerHTML = 'из ' + goalN + ' ' + plural(goalN, 'тренировки', 'тренировок', 'тренировок') + '<br>на этой неделе';
-  $('hmStreak').textContent = wks; $('hmStreakL').textContent = plural(wks, 'неделя', 'недели', 'недель');
+  $('hmWk').textContent = wk + ' / ' + goalN;
+  const stw = streakWorkouts(); $('hmStreak').textContent = stw; $('hmFire').hidden = !stw;
   // мышцы дня — родные слои Runway на фигурах спереди и сзади
   const zs = new Set(p.zones); miniFig($('hmF'), 'front', zs); miniFig($('hmB'), 'back', zs);
   // готовность: насколько отдохнули мышцы сегодняшней тренировки (мышца отдыхает около трёх суток) — показывается в «Прогрессе»
@@ -1646,7 +1721,7 @@ function renderHome(){
   $('planGo').hidden = !!W; $('planGo').onclick = () => { haptic(); PICK = []; renderGrp(); go('s-grp'); };
   const tw = Math.round((Math.min(innerWidth, 480) - 40 - 28 - 12) / 2);
   $('homePlan').querySelectorAll('.pt button').forEach(r => { const z = EXI[r.dataset.id][2], v = LIBV[z], ic = r.firstChild;
-    miniFig(ic, v, new Set([z])); figCrop(ic, v, z, tw + 6, 72, 290, .5, .5); r.onclick = () => { haptic(); excFrom = 's-home'; openExCard(r.dataset.id); }; });
+    miniFig(ic, v, new Set([z])); figCrop(ic, v, z, tw + 6, Math.min(innerWidth, 480) <= 360 ? 108 : 124, 470, .5, .5); r.onclick = () => { haptic(); excFrom = 's-home'; openExCard(r.dataset.id); }; });
   const ups = HIST.filter(h => Date.now() - h.t < 30*86400000).reduce((a,h) => a + (h.up||0), 0);
   const m30 = HIST.filter(h => Date.now() - h.t < 30*86400000).length;
   $('homeTiles').innerHTML = `<div><span>Всего тренировок</span><b>${HIST.length}</b></div><div><span>За месяц</span><b>${m30}</b></div>
@@ -1654,6 +1729,7 @@ function renderHome(){
   // прошлая тренировка: название и дата; «Посмотреть» раскрывает упражнения с подходами
   const lh = HIST[HIST.length - 1]; $('homeLastC').hidden = !lh; const lwOk = !!(lh && LW && LW.t === lh.t && LW.items && LW.items.length); $('lastEdit').hidden = !lwOk; $('homeLastAct').hidden = !(lwOk || (lh && (lh.ex || []).length));
   $('homeLastX').classList.remove('open'); $('lastView').textContent = 'Посмотреть';
+  $('homeLastRow').hidden = !lh; if (lh) { const dy0 = daysAgo(lh.t); $('homeLastRowT').textContent = ((lh.z || []).map((z, i) => i ? ZNAME[z].toLowerCase() : ZNAME[z]).join(', ') || 'Тренировка') + ' · ' + (dy0 === 'сегодня' || dy0 === 'вчера' ? dy0 : new Date(lh.t).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })); }
   if (lh) { const d = new Date(lh.t), dy = daysAgo(lh.t); $('homeLastD').textContent = dy === 'сегодня' || dy === 'вчера' ? dy : d.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'long' });
     $('homeLast').innerHTML = `<div class="hm-last tot one"><b>${(lh.z || []).map((z, i) => i ? ZNAME[z].toLowerCase() : ZNAME[z]).join(', ') || 'Тренировка'}</b></div>`;
     const rows = lwOk ? LW.items.map(it => [it.id, it.s.map(([kg, r]) => (kg ? String(kg).replace('.', ',') + '×' : '') + r)]) : (() => { const m = {}; (lh.ex || []).forEach(([id, kg, r]) => (m[id] = m[id] || []).push((kg ? String(kg).replace('.', ',') + '×' : '') + r)); return Object.entries(m); })();
@@ -2043,6 +2119,7 @@ $('editYes').onclick = () => { $('editMenu').hidden = true; editLast(); };
 $('editNo').onclick = () => { $('editMenu').hidden = true; };
 $('editMenu').onclick = e => { if (e.target.id === 'editMenu') $('editMenu').hidden = true; };
 $('homeProg').onclick = () => { haptic(); renderPr(); go('s-pr'); };
+$('homeLastRow').onclick = () => { haptic(); renderPr(); go('s-pr'); setTimeout(() => { const c = $('prHiC'); if (c && !c.hidden) c.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120); };
 $('homeProgs').addEventListener('click', e => { const o = e.target.closest('.pg-open'), g = e.target.closest('.pg-go');
   if (o) openProg(+o.dataset.i); if (g) startProg(+g.dataset.i); });
 
