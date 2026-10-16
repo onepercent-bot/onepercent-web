@@ -850,7 +850,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 
 /* главная v59: по референсу ChatGPT (hero с показателями вокруг персонажа, компактные карточки) */
 #s-home{padding:0 16px calc(96px + env(safe-area-inset-bottom))}
-#s-home #apToday{margin:0 -16px;padding:0;--v:var(--tg-viewport-stable-height,100dvh);--ch:min(118vw,560px,calc(var(--v) * .58));--ct:calc(var(--ch) * .093);--hh:calc(var(--ch) * .715);--r1:max(calc(var(--ct) + var(--ch) * .133),96px);--r2:calc(var(--r1) + max(var(--ch) * .148,52px));height:var(--hh)}   /* размеры hero считаются от ширины и высоты окна Telegram */
+#s-home #apToday{margin:0 -16px;padding:0;--v:var(--tg-viewport-stable-height,100dvh);--ch:min(118vw,560px,calc(var(--v) * .66));--ct:calc(var(--ch) * .093);--hh:calc(var(--ch) * .715);--r1:max(calc(var(--ct) + var(--ch) * .133),96px);--r2:calc(var(--r1) + max(var(--ch) * .148,52px));height:var(--hh)}   /* размеры hero считаются от ширины и высоты окна Telegram */
 #s-home #apToday .hm-art{height:var(--hh)!important}
 #s-home #apToday .hm-cine{height:var(--hh);overflow:hidden}
 #s-home #apToday .hm-cine .bg{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 92%,transparent 100%)}
@@ -951,6 +951,10 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 #s-home .hv-plan .pt b{-webkit-line-clamp:2}
 @media (max-width:360px){#s-home .hv-ttl b{font-size:20px;line-height:26px}}
 @media (max-width:389px){#s-home .hv-plan #planGo{display:none}}   /* на узких экранах «N упражнений · мин» не помещается рядом с заголовком */
+
+/* v71: без дублей — на главной нет «Рекомендуемой тренировки» (её смысл в кнопке и плане), служебная версия в профиле мельче */
+#s-home .hm-reco{display:none}
+#verTap{font-size:11.5px!important;opacity:.6}
 </style>
 </head>
 <body>
@@ -1095,7 +1099,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
     <div class="hm-art"><div class="hm-top2"><b>one%</b><span class="ap-date" id="hmDate"></span></div>
     <div class="hm-cine"><div class="bg"></div><img class="gl" src="img/hero_char_glow.webp" alt=""><img class="ch" src="img/hero_char.webp" alt=""><div class="fog"></div><div class="mz" id="hmMz"><div class="mz-pl" id="hmMzPl"><svg viewBox="0 0 1024 1536" preserveAspectRatio="none"><g data-g="chest"><path d="M509 319C503 309 486 312 475 310C464 308 452 308 440 309C428 310 415 311 405 314C395 317 388 320 382 325C377 330 374 337 371 345C368 353 368 365 368 375C367 385 367 396 368 405C368 414 368 421 371 428C374 434 377 440 382 445C388 450 396 454 405 458C414 462 425 466 435 469C445 472 455 474 465 474C475 474 485 472 492 469C500 466 505 466 508 459C510 452 510 440 510 425C510 410 510 388 510 370C510 352 515 329 509 319Z"/><path d="M516 319C522 309 538 312 550 310C562 308 573 308 585 309C597 310 610 311 620 314C630 317 639 320 645 325C651 330 652 337 654 345C656 353 657 365 658 375C658 385 658 396 658 405C657 414 655 422 652 430C650 438 646 444 640 450C634 456 624 461 615 465C606 469 595 472 585 474C575 476 564 475 555 474C546 473 536 470 530 468C524 465 518 466 516 459C514 452 515 440 515 425C515 410 515 388 515 370C515 352 510 329 516 319Z"/></g><g data-g="shoulders"><path d="M392 311C390 308 375 305 365 305C355 305 341 306 330 310C319 314 307 322 300 330C293 338 289 350 286 360C283 370 282 380 281 390C280 400 281 411 282 420C284 429 286 436 290 442C294 449 300 456 305 460C310 464 317 466 322 465C328 464 335 458 340 452C345 447 352 438 355 430C358 422 360 414 361 405C362 396 362 385 362 375C363 365 362 354 365 345C368 336 373 328 378 322C382 317 395 314 392 311Z"/><path d="M635 311C639 308 659 305 670 306C681 307 692 309 700 315C708 321 715 330 720 340C725 350 728 363 730 375C732 387 733 399 732 410C732 421 732 432 729 440C726 448 722 456 718 460C713 464 706 467 700 466C694 465 688 461 682 455C677 449 672 441 669 432C666 424 664 415 662 405C661 395 662 385 661 375C660 365 661 354 659 345C657 336 652 328 648 322C644 317 631 314 635 311Z"/></g><g data-g="biceps"><path d="M328 465C335 465 343 465 348 470C352 475 355 486 356 495C357 504 357 516 356 525C355 534 353 542 350 550C347 558 342 568 338 572C332 578 327 580 320 580C313 580 304 575 298 570C291 565 285 556 281 548C277 539 276 529 276 520C276 511 278 499 282 491C287 483 298 475 305 471C312 467 320 465 328 465Z"/><path d="M690 465C683 465 675 468 670 472C665 478 664 486 662 495C661 504 661 516 662 525C664 534 666 542 669 550C672 558 677 568 682 572C688 578 694 580 700 580C706 580 713 575 718 570C722 565 725 556 728 548C730 539 730 529 730 520C730 511 728 500 725 492C722 485 718 477 712 472C707 468 697 465 690 465Z"/></g></svg></div><canvas class="mz-cv" id="hmMzCv" width="1024" height="1536"></canvas><div class="mz-hl" id="hmMzHl"></div></div><div class="rc" id="hmRc" hidden><button class="rc-x" id="hmRcX" aria-label="Закрыть">×</button><b id="hmRcN"></b><span class="rc-p" id="hmRcP"></span><i class="rc-bar"><s id="hmRcB"></s></i><span class="rc-t" id="hmRcT"></span></div><div class="mz-tip" id="hmMzTip">Нажми на мышцу, чтобы посмотреть восстановление</div></div>
     <div class="hm-figs" id="hmFigs"><div class="hm-fig f" id="hmF"></div><div class="hm-fig b" id="hmB"></div></div></div>
-<div class="hv-head"><button class="hv-gear" id="hvGear" aria-label="Профиль"><svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button></div><button class="hv-ttl" id="hvTtl"><span>Сегодня</span><b><em id="hmTitle">Верх тела</em><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="hv-chip l1" data-g="shoulders"><span>Плечи</span><b id="hmC_shoulders">82%</b><i><s id="hmBar_shoulders" style="width:82%"></s></i></div><div class="hv-chip r1" data-g="chest"><span>Грудь</span><b id="hmC_chest">76%</b><i><s id="hmBar_chest" style="width:76%"></s></i></div><div class="hv-chip l2" data-g="biceps"><span>Бицепс</span><b id="hmC_biceps">68%</b><i><s id="hmBar_biceps" style="width:68%"></s></i></div><div class="hv-chip r2" data-g="back"><span>Спина</span><b id="hmC_back">91%</b><i><s id="hmBar_back" style="width:91%"></s></i></div><svg class="hv-lines" id="hvLines"></svg>
+<div class="hv-head"><button class="hv-gear" id="hvGear" aria-label="Профиль"><svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button></div><button class="hv-ttl" id="hvTtl"><span>Сегодня</span><b><em id="hmTitle">Верх тела</em><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="hv-chip l1" data-g="shoulders"><span>Плечи</span><b id="hmC_shoulders">82%</b><i><s id="hmBar_shoulders" style="width:82%"></s></i></div><div class="hv-chip r1" data-g="chest"><span>Грудь</span><b id="hmC_chest">76%</b><i><s id="hmBar_chest" style="width:76%"></s></i></div><div class="hv-chip l2" data-g="biceps"><span>Бицепс</span><b id="hmC_biceps">68%</b><i><s id="hmBar_biceps" style="width:68%"></s></i></div><div class="hv-chip r2" data-g="abs"><span>Пресс</span><b id="hmC_abs">88%</b><i><s id="hmBar_abs" style="width:88%"></s></i></div><svg class="hv-lines" id="hvLines"></svg>
     <div class="hm-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 1 0-17z" fill="currentColor"/></svg><span id="homeStatus"></span><span class="hm-sf" id="hmPillFire" hidden>🔥 <b id="hmPillN"></b></span></div>
     <button class="hm-small" id="btnStartS" hidden>Начать тренировку</button>
   </div>
@@ -1191,12 +1195,11 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
     <div class="pr-hd"><span class="pr-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v6M7 10l5-2 5 2M9.5 21l2.5-7 2.5 7"/></svg></span><div class="pr-ht"><b>Анатомическая карта</b><small>Нажми на мышцу, чтобы увидеть подробную статистику</small></div><button class="pr-pill" id="prAll">Все группы<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
     <div class="pr-body">
       <div class="pr-l"><div class="pr-figs"><div class="fig" id="prF"></div><div class="fig" id="prB"></div></div></div>
-      <div class="pr-side"><div class="pr-st">Основные группы</div><div class="pr-chips" id="prChips"></div>
-        <div class="pr-leg"><span><i class="g"></i>Хороший прогресс</span><span><i class="w"></i>Нуждается в внимании</span><span><i class="n"></i>Нет данных</span></div></div>
+      <div class="pr-side"><div class="pr-st">Основные группы</div><div class="pr-chips" id="prChips"></div></div>
     </div>
-    <div class="pr-tip"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><div><b>Чем ярче мышца, тем выше её ранг</b><span id="prInfo"></span></div></div>
+    <div class="pr-tip"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><div><span id="prInfo"></span></div></div>
   </div>
-  <div class="ap-card" id="prTotC"><div class="pr-hd"><span class="pr-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><div class="pr-ht"><b>Эта неделя</b><small>В сравнении с прошлой</small></div></div>
+  <div class="ap-card" id="prTotC"><div class="pr-hd"><span class="pr-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><div class="pr-ht"><b>Эта неделя</b><small>Объём и время тренировок</small></div></div>
     <div class="pr-tot" id="prTot"></div></div>
   <div class="ap-card" id="prRecC"><div class="pr-hd"><span class="pr-ic"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5a2 2 0 0 0 2 4M16 6h3a2 2 0 0 1-2 4M12 13v4M9 20h6"/></svg></span><div class="pr-ht"><b>Рекорды</b><small>Твои лучшие результаты</small></div><button class="pr-pill" id="prRecAll" hidden><span>Все рекорды</span><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div><div id="prRec"></div><div class="pr-xd" id="prRecD"><div></div></div></div>
   <div class="ap-card" id="prHiC" hidden><div class="pr-hd"><span class="pr-ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4M12 8v4l3 2"/></svg></span><div class="pr-ht"><b>История тренировок</b><small id="prHiN"></small></div></div><div id="prHi"></div></div>
@@ -1205,7 +1208,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
 
 <section class="screen" id="s-me" data-app>
   <div class="me-head"><div class="me-av" id="meAv"></div><div><h1 class="ap-title" id="meName">Профиль</h1><p id="meSub"></p></div></div>
-  <div class="ap-card"><div class="ap-ch"><b>Статистика</b></div><div class="ap-tr" id="homeTiles"></div></div>
+  <div class="ap-tr" id="homeTiles" style="display:none"></div>
   <div class="ap-card" id="meGoalC"><div class="ap-ch"><b>Моя цель</b><button class="ap-link" id="meGoalEdit">Изменить</button></div><div class="mg-sel" id="meGoalSel"></div><div class="pr-xd" id="meGoalX"><div><div class="mg" id="meGoals"></div><p class="mg-hint">Можно выбрать несколько</p></div></div></div>
   <div class="ap-card"><div class="ap-ch"><b>Дни тренировок</b><span id="wdSum"></span></div><div class="wd-chips" id="wdChips"></div><button class="ap-go" id="planNew">Обновить упражнения в программе</button></div>
   <div class="ap-card"><div class="ap-ch"><b>Вес тела</b><button class="ap-link" id="prBwBtn">Записать</button></div><div id="prBw"></div></div>
@@ -1334,7 +1337,7 @@ html.one-view .hm-fig.f{right:auto;left:50%;transform:translateX(-50%)}
   </div></div>
 <script>
 // журнал ошибок для скрытого экрана «Диагностика» (долгое нажатие на версию в «Профиле»)
-const APP_V = 70;   // при каждой выкладке: поднять здесь и в version.txt
+const APP_V = 71;   // при каждой выкладке: поднять здесь и в version.txt
 const DBG = []; const dbgAdd = t => { DBG.push(new Date().toTimeString().slice(0, 8) + ' ' + t); if (DBG.length > 30) DBG.shift(); };
 window.addEventListener('error', e => dbgAdd('Ошибка: ' + (e.message || '') + ' (' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || '') + ')'));
 window.addEventListener('unhandledrejection', e => dbgAdd('Промис: ' + ((e.reason && (e.reason.message || e.reason)) || '')));
@@ -1764,6 +1767,7 @@ function appBack(){
   else go('s-home');
 }
 const fmtKg = n => (Math.round(n*10)/10).toLocaleString('ru-RU') + ' кг';
+const okDur = h => h.dur > 0 && h.dur <= 3 * 3600;   // тренировку, которую забыли закрыть (дольше 3 ч), во время не засчитываем
 const fmtDur = sec => { const m = Math.floor(sec/60), h = Math.floor(m/60); return h ? h + ' ч ' + (m%60) + ' мин' : Math.max(1,m) + ' мин'; };
 const dayKey = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 const monday = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; };
@@ -1832,7 +1836,7 @@ let mzSel = null;
 function mzGrad(list, a){ return list.map(([x, y, rx, ry]) => `radial-gradient(ellipse ${rx * 100}% ${ry * 100}% at ${x * 100}% ${y * 100}%, rgba(107,46,58,${a}) 0%, rgba(107,46,58,${a * .55}) 55%, rgba(107,46,58,0) 100%)`).join(','); }
 // главная v57: заголовок дня, проценты восстановления вокруг персонажа, неделя
 const DEFKG = { incdb: 24, pecdeck: 45 };   // стартовые веса в плане, пока нет своей истории
-const HM_DEF = { shoulders: 82, chest: 76, biceps: 68, back: 91 };   // показывается, пока по мышце нет истории
+const HM_DEF = { shoulders: 82, chest: 76, biceps: 68, abs: 88 };   // показывается, пока по мышце нет истории
 let hmTarget = [];
 const HV_G = new Set(['chest', 'shoulders', 'biceps']);   // эти группы подсвечены по контуру мышцы (SVG), остальные — мягким пятном
 function homeV57(p){
@@ -1861,7 +1865,7 @@ $('hmWeek').onclick = e => { const b = e.target.closest('button[data-k]'); if (!
   store.set('mk', MK); hapt('light'); renderWeek(); if (MK[k]) toast('Отмечено: тренировался');
 };
 // тонкие линии от показателей к мышцам на персонаже
-const HV_DOT = { shoulders: [.305, .245], chest: [.585, .255], biceps: [.30, .335], back: [.69, .315] };
+const HV_DOT = { shoulders: [.305, .245], chest: [.585, .255], biceps: [.30, .335], abs: [.545, .37] };
 function hvLines(){
   const hero = $('apToday'), svg = $('hvLines'), mz = $('hmMz'); if (!svg || !mz || hero.classList.contains('dayoff')) { if (svg) svg.innerHTML = ''; return; }
   const h = hero.getBoundingClientRect(), m = mz.getBoundingClientRect(); if (!m.width) return;
@@ -2071,13 +2075,14 @@ function renderPr(){
   const op = z => { const k = rankOf(z); if (!k.s) return 0; return (0.18 + 0.82 * Math.min(1, (k.r + Math.min(1, k.s / (RANKS[k.r] || k.s))) / RANKS.length)) * (k.stale ? .55 : 1); };
   ['front', 'back'].forEach(v => { const m = new Map(Object.keys(FIG[v].zones).map(z => [z, op(z)])); miniFig($(v === 'front' ? 'prF' : 'prB'), v, m); });
   $('prChips').innerHTML = KEYS.map(z => { const k = rankOf(z), st = !k.s ? 'nd' : k.stale ? 'w' : 'g';
-    return `<button data-z="${z}" class="${st}"><i></i><span>${ZNAME[z]}</span><em>${k.s ? rkPct(k) + '%' : '—'}</em><div class="b"><s style="width:${k.s ? rkPct(k) : 0}%"></s></div></button>`; }).join('');
+    return `<button data-z="${z}" class="${st}"><i></i><span>${ZNAME[z]}</span><em>${k.s ? 'ранг ' + k.r : '—'}</em><div class="b"><s style="width:${k.s ? rkPct(k) : 0}%"></s></div></button>`; }).join('');
   $('prChips').querySelectorAll('button').forEach(b => b.onclick = () => { haptic(); prInfo(b.dataset.z); });
-  if (prSel) prInfo(prSel); else $('prInfo').textContent = HIST.length ? 'Процент — путь до следующего ранга. Нажми на группу, чтобы узнать подробности.' : 'После первой тренировки мышцы начнут светиться: чем выше ранг, тем ярче.';
+  if (prSel) prInfo(prSel); else $('prInfo').textContent = HIST.length ? 'Нажми на группу — покажу ранг и сколько подходов до следующего.' : 'Ранги появятся после первой тренировки.';
   // отстают: никогда не тренированные или давно, затем с самым низким рангом
   const zs = (!data.zones.length || data.zones.includes('all')) ? KEYS : KEYS.filter(z => data.zones.includes(z));
-  const lag = zs.map(z => ({ z, ...rankOf(z) })).sort((a, b) => (a.t || 0) - (b.t || 0) || a.s - b.s).slice(0, 2);
-  $('prLagC').hidden = !HIST.length;
+  const hz = { back: ['back'], shoulders: ['shoulders'], knees: ['legs'] }, ban = new Set((data.health || []).flatMap(h => hz[h] || []));
+  const lag = zs.filter(z => !ban.has(z)).map(z => ({ z, ...rankOf(z) })).filter(x => !x.t || Date.now() - x.t >= 7 * 864e5).sort((a, b) => (a.t || 0) - (b.t || 0) || a.s - b.s).slice(0, 2);
+  $('prLagC').hidden = !HIST.length || !lag.length;
   $('prLag').innerHTML = lag.map(x => `<div class="pr-lag"><div><b>${ZNAME[x.z]}</b><span>${x.t ? 'последний раз ' + daysAgo(x.t) : 'ни разу'}</span></div><button data-z="${x.z}">+ В тренировку</button></div>`).join('');
   $('prLag').querySelectorAll('button').forEach(b => b.onclick = () => { haptic(); FORCE = { z: b.dataset.z, d: dayKey(new Date()) }; store.set('force', FORCE);
     if (W) { const ids = EX.filter(e => e[2] === b.dataset.z).slice(0, 2).map(e => e[0]); ids.forEach(id => { if (!W.items.some(it => it.id === id)) W.items.push(newItem(id, 10)); }); store.set('cur', W); }
@@ -2086,18 +2091,17 @@ function renderPr(){
   const mon = monday(new Date()).getTime(), wkS = {};
   HIST.filter(h => h.t >= mon).forEach(h => { const zz = h.zs || Object.fromEntries((h.z || []).map(z => [z, Math.round((h.sets || 0) / (h.z.length || 1))])); Object.entries(zz).forEach(([z, n]) => wkS[z] = (wkS[z] || 0) + n); });
   // эта неделя против прошлой: всё из истории тренировок (число, объём кг×повторы, время, рекорды)
-  const monP = mon - 7 * 86400000, agg = f => HIST.filter(f).reduce((a, h) => ({ n: a.n + 1, vol: a.vol + (h.vol || 0), dur: a.dur + (h.dur || 0), pr: a.pr + (h.pr || 0) }), { n: 0, vol: 0, dur: 0, pr: 0 });
+  const monP = mon - 7 * 86400000, agg = f => HIST.filter(f).reduce((a, h) => ({ n: a.n + 1, vol: a.vol + (h.vol || 0), dur: a.dur + (okDur(h) ? h.dur : 0), pr: a.pr + (h.pr || 0) }), { n: 0, vol: 0, dur: 0, pr: 0 });
   const cw = agg(h => h.t >= mon), pw = agg(h => h.t >= monP && h.t < mon), goalN = data.wd ? data.wd.length : (+data.days || 3);
-  const dl = (c, p) => p > 0 ? `<em class="${c >= p ? 'up' : 'dn'}">${c >= p ? '+' : '−'}${Math.abs(Math.round((c - p) / p * 100))}%</em> к прошлой` : 'нет данных за прошлую';
+  const dl = (c, p) => p > 0 ? `<em class="${c >= p ? 'up' : 'dn'}">${c >= p ? '+' : '−'}${Math.abs(Math.round((c - p) / p * 100))}%</em> к прошлой` : '';
   const dn = (c, p) => pw.n ? `<em class="${c >= p ? 'up' : 'dn'}">${c >= p ? '+' : '−'}${Math.abs(c - p)}</em> к прошлой` : 'нет данных за прошлую';
-  $('prTot').innerHTML = [['Тренировки', cw.n + ' / ' + goalN, dn(cw.n, pw.n)],
-    ['Объём', cw.vol ? Math.round(cw.vol).toLocaleString('ru-RU') + ' кг' : '—', cw.vol ? dl(cw.vol, pw.vol) : 'нет данных'],
-    ['Время', cw.dur ? fmtDur(cw.dur) : '—', cw.dur ? dl(cw.dur, pw.dur) : 'нет данных'],
-    ['Рекорды', String(cw.pr), 'за эту неделю']].map(t => `<div><small>${t[0]}</small><b>${t[1]}</b><span>${t[2]}</span></div>`).join('');
+  $('prTot').innerHTML = [['Объём', cw.vol ? Math.round(cw.vol).toLocaleString('ru-RU') + ' кг' : '—', cw.vol ? dl(cw.vol, pw.vol) : ''],
+    ['Время', cw.dur ? fmtDur(cw.dur) : '—', cw.dur ? dl(cw.dur, pw.dur) : '']].map(t => `<div><small>${t[0]}</small><b>${t[1]}</b>${t[2] ? `<span>${t[2]}</span>` : ''}</div>`).join('');
+  $('prTotC').hidden = !cw.vol && !cw.dur;
   $('prAll').onclick = () => { haptic(); PICK = []; renderGrp(); go('s-grp'); };
   // история: последние тренировки, сначала новые; видно три, остальное по нажатию
-  const hi = HIST.slice().reverse().slice(0, 20); $('prHiC').hidden = !hi.length; $('prHiN').textContent = 'Последние ' + Math.min(hi.length, 20) + ' ' + plural(Math.min(hi.length, 20), 'тренировка', 'тренировки', 'тренировок');
-  const hrow = h => `<div class="hi-r"><div><b>${(h.z || []).map((z, k) => k ? ZNAME[z].toLowerCase() : ZNAME[z]).join(', ') || 'Тренировка'}</b><small>${new Date(h.t).toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'long' })}</small></div><span>${h.sets} ${plural(h.sets, 'подход', 'подхода', 'подходов')}<br>${fmtDur(h.dur)}</span></div>`;
+  const hi = HIST.slice().reverse().slice(0, 20); $('prHiC').hidden = !hi.length; $('prHiN').textContent = 'Всего ' + HIST.length + ' ' + plural(HIST.length, 'тренировка', 'тренировки', 'тренировок');
+  const hrow = h => `<div class="hi-r"><div><b>${(h.z || []).map((z, k) => k ? ZNAME[z].toLowerCase() : ZNAME[z]).join(', ') || 'Тренировка'}</b><small>${new Date(h.t).toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'long' })}</small></div><span>${h.sets} ${plural(h.sets, 'подход', 'подхода', 'подходов')}${okDur(h) ? '<br>' + fmtDur(h.dur) : ''}</span></div>`;
   $('prHi').innerHTML = hi.slice(0, 3).map(hrow).join('') + (hi.length > 3 ? `<div class="pr-xd" id="prHiX"><div>${hi.slice(3).map(hrow).join('')}</div></div><button class="ap-more" id="prHiMore">Показать все</button>` : '');
   if ($('prHiMore')) $('prHiMore').onclick = () => { haptic(); const o = $('prHiX').classList.toggle('open'); $('prHiMore').textContent = o ? 'Свернуть' : 'Показать все'; };
   // рекорды: плитки с лучшим весом; «плюс» к прошлому рекорду считаем по истории (если есть с чем сравнить)
@@ -2270,7 +2274,6 @@ function renderGrp(){
     const c = PICK ? PICK.filter(id => EXI[id][2] === z).length : 0;
     return `<button class="gp-t" data-z="${z}"><div class="ph"></div>${c ? `<span class="cnt">${c}</span>` : ''}<div class="cap"><b>${ZNAME[z]}</b><span>${n} ${plural(n, 'упражнение', 'упражнения', 'упражнений')}</span></div></button>`; }).join('');
   $('grpSub').textContent = PICK ? 'Выбери упражнения для тренировки' : 'Выбери группу мышц';
-  if (!PICK) $('grpG').insertAdjacentHTML('beforeend', '<button class="ap-go" id="grpTest" style="grid-column:1/-1">Тест анимаций: RepDB и Vital</button>');
   const tw = Math.round((Math.min(innerWidth, 480) - 40 - 20) / 3), th = Math.round(tw * 1.25);
   $('grpG').querySelectorAll('.gp-t').forEach((t, i) => { const z = t.dataset.z, v = LIBV[z], ph = t.firstChild;
     miniFig(ph, v, new Set([z])); figCrop(ph, v, z, tw, th, Math.round(th * 2.9), .5, data.sex === 'female' && z === 'chest' ? .2 : .42); t.style.animationDelay = i * .03 + 's'; });
